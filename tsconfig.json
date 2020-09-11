@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "es2018",
+    "lib": ["ESNext"],
+    "outDir": "lib",
+    "rootDir": "src",
+    "downlevelIteration": true,
+    "experimentalDecorators": true
+  }
+}

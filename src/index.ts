@@ -3,6 +3,7 @@ import memoizefs from 'memoize-fs'
 import os from 'os'
 import path from 'path'
 import exec from './commands/exec'
+import node from './commands/node'
 import run from './commands/run'
 
 export const memoizer = memoizefs({
@@ -18,7 +19,7 @@ const plugin = {
                 memoizer.invalidate()
             },
         },
-        commands: [run, exec],
+        commands: [run, exec, node],
     }),
 }
 

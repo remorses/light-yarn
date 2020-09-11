@@ -18,6 +18,6 @@ export default class NodeCommand extends BaseCommand {
 
     @Command.Path(`lightnode`)
     async execute() {
-        return this.cli.run([`exec`, `node`, ...this.args])
+        return this.cli.run([`lightexec`, `node`, ...this.args])
     }
 }

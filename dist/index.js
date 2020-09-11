@@ -74300,7 +74300,7 @@ class ExecCommand extends cli_1.BaseCommand {
                 stdout: this.context.stdout,
                 stderr: this.context.stderr,
                 env: {
-                    ...(await core_1.scriptUtils.makeScriptEnv({ binFolder })),
+                    // ...(await scriptUtils.makeScriptEnv({ binFolder })),
                     NODE_OPTIONS: (process.env.NODE_OPTIONS || "") +
                         " --require " +
                         path_1.default.resolve(configuration.projectCwd, ".pnp.js"),
@@ -74329,6 +74329,50 @@ __decorate([
     clipanion_1.Command.Path(`lightexec`)
 ], ExecCommand.prototype, "execute", null);
 exports.default = ExecCommand;
+
+
+/***/ }),
+
+/***/ 917:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const cli_1 = __webpack_require__(9823);
+const clipanion_1 = __webpack_require__(5392);
+// eslint-disable-next-line arca/no-default-export
+class NodeCommand extends cli_1.BaseCommand {
+    constructor() {
+        super(...arguments);
+        this.args = [];
+    }
+    async execute() {
+        return this.cli.run([`lightexec`, `node`, ...this.args]);
+    }
+}
+NodeCommand.usage = clipanion_1.Command.Usage({
+    description: `run node with the hook already setup`,
+    details: `
+      This command simply runs Node. It also makes sure to call it in a way that's compatible with the current project (for example, on PnP projects the environment will be setup in such a way that PnP will be correctly injected into the environment).
+
+      The Node process will use the exact same version of Node as the one used to run Yarn itself, which might be a good way to ensure that your commands always use a consistent Node version.
+    `,
+    examples: [[`Run a Node script`, `$0 node ./my-script.js`]],
+});
+__decorate([
+    clipanion_1.Command.Proxy()
+], NodeCommand.prototype, "args", void 0);
+__decorate([
+    clipanion_1.Command.Path(`lightnode`)
+], NodeCommand.prototype, "execute", null);
+exports.default = NodeCommand;
 
 
 /***/ }),
@@ -74582,12 +74626,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.memoizer = void 0;
-const exec_1 = __importDefault(__webpack_require__(9933));
-const memoize_fs_1 = __importDefault(__webpack_require__(5669));
-const run_1 = __importDefault(__webpack_require__(9566));
 const chalk_1 = __importDefault(__webpack_require__(8818));
+const memoize_fs_1 = __importDefault(__webpack_require__(5669));
 const os_1 = __importDefault(__webpack_require__(2087));
 const path_1 = __importDefault(__webpack_require__(5622));
+const exec_1 = __importDefault(__webpack_require__(9933));
+const node_1 = __importDefault(__webpack_require__(917));
+const run_1 = __importDefault(__webpack_require__(9566));
 exports.memoizer = memoize_fs_1.default({
     cachePath: path_1.default.resolve(os_1.default.tmpdir(), 'yarn-plugin-cache'),
 });
@@ -74600,7 +74645,7 @@ const plugin = {
                 exports.memoizer.invalidate();
             },
         },
-        commands: [run_1.default, exec_1.default],
+        commands: [run_1.default, exec_1.default, node_1.default],
     }),
 };
 // eslint-disable-next-line arca/no-default-export

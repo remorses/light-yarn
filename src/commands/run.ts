@@ -1,27 +1,23 @@
-import { BaseCommand, pluginCommands } from '@yarnpkg/cli'
-import { Configuration, Project, Workspace, Locator } from '@yarnpkg/core'
+import { BaseCommand } from '@yarnpkg/cli'
+import { Configuration, Project } from '@yarnpkg/core'
 import * as execUtils from '@yarnpkg/core/lib/execUtils'
-import { scriptUtils, structUtils } from '@yarnpkg/core'
-import { Command, Usage } from 'clipanion'
-import path from 'path'
-
 import {
     getPackageAccessibleBinaries,
     makeScriptEnv,
 } from '@yarnpkg/core/lib/scriptUtils'
 import {
-    xfs,
-    PortablePath,
-    toFilename,
     Filename,
     NativePath,
+    PortablePath,
     ppath,
+    toFilename,
+    xfs,
 } from '@yarnpkg/fslib'
-import { profile } from 'console'
-import { execSync } from 'child_process'
-import { parseShell } from '@yarnpkg/parsers'
-import { memoizer } from '..'
 import chalk from 'chalk'
+import { execSync } from 'child_process'
+import { Command, Usage } from 'clipanion'
+import path from 'path'
+import { memoizer } from '..'
 
 // eslint-disable-next-line arca/no-default-export
 export default class RunCommand extends BaseCommand {

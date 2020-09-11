@@ -74281,7 +74281,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const cli_1 = __webpack_require__(9823);
 const core_1 = __webpack_require__(7284);
-const core_2 = __webpack_require__(7284);
 const fslib_1 = __webpack_require__(9374);
 const clipanion_1 = __webpack_require__(5392);
 const path_1 = __importDefault(__webpack_require__(5622));
@@ -74295,13 +74294,13 @@ class ExecCommand extends cli_1.BaseCommand {
         const configuration = await core_1.Configuration.find(this.context.cwd, this.context.plugins);
         // const {project} = await Project.find(configuration, this.context.cwd);
         return await fslib_1.xfs.mktempPromise(async (binFolder) => {
-            const { code } = await core_2.execUtils.pipevp(this.commandName, this.args, {
+            const { code } = await core_1.execUtils.pipevp(this.commandName, this.args, {
                 cwd: this.context.cwd,
                 stdin: this.context.stdin,
                 stdout: this.context.stdout,
                 stderr: this.context.stderr,
                 env: {
-                    ...(await core_2.scriptUtils.makeScriptEnv({ binFolder })),
+                    ...(await core_1.scriptUtils.makeScriptEnv({ binFolder })),
                     NODE_OPTIONS: (process.env.NODE_OPTIONS || "") +
                         " --require " +
                         path_1.default.resolve(configuration.projectCwd, ".pnp.js"),
@@ -74371,13 +74370,13 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const cli_1 = __webpack_require__(9823);
 const core_1 = __webpack_require__(7284);
 const execUtils = __importStar(__webpack_require__(9437));
-const clipanion_1 = __webpack_require__(5392);
-const path_1 = __importDefault(__webpack_require__(5622));
 const scriptUtils_1 = __webpack_require__(9543);
 const fslib_1 = __webpack_require__(9374);
-const child_process_1 = __webpack_require__(3129);
-const __1 = __webpack_require__(6144);
 const chalk_1 = __importDefault(__webpack_require__(8818));
+const child_process_1 = __webpack_require__(3129);
+const clipanion_1 = __webpack_require__(5392);
+const path_1 = __importDefault(__webpack_require__(5622));
+const __1 = __webpack_require__(6144);
 // eslint-disable-next-line arca/no-default-export
 class RunCommand extends cli_1.BaseCommand {
     constructor() {

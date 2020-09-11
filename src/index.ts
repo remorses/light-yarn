@@ -1,10 +1,9 @@
-import { Plugin } from '@yarnpkg/core'
-import exec from './commands/exec'
-import memoizefs from 'memoize-fs'
-import run from './commands/run'
 import chalk from 'chalk'
+import memoizefs from 'memoize-fs'
 import os from 'os'
 import path from 'path'
+import exec from './commands/exec'
+import run from './commands/run'
 
 export const memoizer = memoizefs({
     cachePath: path.resolve(os.tmpdir(), 'yarn-plugin-cache'),

@@ -12,7 +12,7 @@ export const memoizer = memoizefs({
 
 const plugin = {
     name: `plugin-hello-world`,
-    factory: (require) => ({
+    factory: () => ({
         hooks: {
             afterAllInstalled() {
                 console.error(chalk.green(`Invalidating lightweight cache`))
@@ -21,7 +21,6 @@ const plugin = {
         },
         commands: [run, exec],
     }),
-    // TODO invalidate run cache on install, add, remove
 }
 
 // eslint-disable-next-line arca/no-default-export

@@ -78,12 +78,11 @@ export default class RunCommand extends BaseCommand {
     @Command.Path(`lightrun`)
     async execute() {
         // console.log('running')
-
         const configuration = await Configuration.find(
             this.context.cwd,
             this.context.plugins,
         )
-
+        // console.log('taken config')
         const packageJSON = getPackageJSON(this.context.cwd)
         if (packageJSON) {
             // console.log(this.scriptName, packageJSON.scripts)

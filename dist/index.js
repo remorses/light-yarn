@@ -74395,6 +74395,7 @@ class RunCommand extends cli_1.BaseCommand {
     async execute() {
         // console.log('running')
         const configuration = await core_1.Configuration.find(this.context.cwd, this.context.plugins);
+        // console.log('taken config')
         const packageJSON = getPackageJSON(this.context.cwd);
         if (packageJSON) {
             // console.log(this.scriptName, packageJSON.scripts)
@@ -74593,7 +74594,7 @@ exports.memoizer = memoize_fs_1.default({
 });
 const plugin = {
     name: `plugin-hello-world`,
-    factory: (require) => ({
+    factory: () => ({
         hooks: {
             afterAllInstalled() {
                 console.error(chalk_1.default.green(`Invalidating lightweight cache`));

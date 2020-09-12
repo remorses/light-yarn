@@ -74439,31 +74439,33 @@ class RunCommand extends cli_1.BaseCommand {
         const configuration = await core_1.Configuration.find(this.context.cwd, this.context.plugins);
         return this.execCommand({
             args: this.args,
+            onlyScripts: this.onlyScripts,
             binaryName: this.scriptName,
             configuration,
         });
     }
-    async execCommand({ binaryName, configuration, args, ignoreScripts = [] }) {
+    async execCommand({ binaryName, configuration, args, onlyScripts, ignoreScripts = [], }) {
         // if a script exists in package.json, run that
         const packageJSON = getPackageJSON(configuration.startingCwd);
         if (packageJSON) {
             // console.log(this.scriptName, packageJSON.scripts)
-            if (this.scriptName in packageJSON.scripts &&
-                !ignoreScripts.includes(this.scriptName)) {
-                const content = packageJSON.scripts[this.scriptName];
+            if (Object.keys(packageJSON.scripts).includes(binaryName) &&
+                !ignoreScripts.includes(binaryName)) {
+                const content = packageJSON.scripts[binaryName];
                 // TODO parse command into args
                 const parsed = content.split(' ');
                 return this.execCommand({
-                    args: [...parsed.slice(1), ...this.args],
+                    args: [...parsed.slice(1), ...args],
                     binaryName: parsed[0],
                     configuration,
-                    ignoreScripts: [...ignoreScripts, this.scriptName],
+                    onlyScripts: false,
+                    ignoreScripts: [...ignoreScripts, binaryName],
                 });
             }
         }
-        if (this.onlyScripts) {
+        if (onlyScripts) {
             return new Promise((res, rej) => {
-                this.context.stderr.write('skipping missing script ' + this.scriptName + '\n', (e) => {
+                this.context.stderr.write('skipping missing script ' + binaryName + '\n', (e) => {
                     if (e) {
                         rej(e);
                     }

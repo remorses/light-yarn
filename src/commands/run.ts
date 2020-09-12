@@ -32,6 +32,9 @@ export default class RunCommand extends BaseCommand {
     @Command.Boolean(`-T,--top-level`, { hidden: true })
     topLevel: boolean = false
 
+    @Command.Boolean(`--only-scripts`, { hidden: true })
+    onlyScripts: boolean = false
+
     // Some tools (for example text editors) want to call the real binaries, not
     // what their users might have remapped them to in their `scripts` field.
     @Command.Boolean(`-B,--binaries-only`, { hidden: true })
@@ -84,7 +87,6 @@ export default class RunCommand extends BaseCommand {
         })
     }
     async execCommand({ binaryName, configuration, args, ignoreScripts = [] }) {
-
         // if a script exists in package.json, run that
         const packageJSON = getPackageJSON(configuration.startingCwd)
         if (packageJSON) {
@@ -103,6 +105,21 @@ export default class RunCommand extends BaseCommand {
                     ignoreScripts: [...ignoreScripts, this.scriptName],
                 })
             }
+        }
+
+        if (this.onlyScripts) {
+            return new Promise((res, rej) => {
+                this.context.stderr.write(
+                    'skipping missing script ' + this.scriptName + '\n',
+                    (e) => {
+                        if (e) {
+                            rej(e)
+                        }
+                        res(0)
+                    },
+                )
+                // this.context.stderr.end()
+            })
         }
 
         const getBins = await memoizer.fn(

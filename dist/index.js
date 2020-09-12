@@ -74429,6 +74429,7 @@ class RunCommand extends cli_1.BaseCommand {
         // This flag is mostly used to give users a way to configure node-gyp. They
         // just have to add it as a top-level workspace.
         this.topLevel = false;
+        this.onlyScripts = false;
         // Some tools (for example text editors) want to call the real binaries, not
         // what their users might have remapped them to in their `scripts` field.
         this.binariesOnly = false;
@@ -74459,6 +74460,17 @@ class RunCommand extends cli_1.BaseCommand {
                     ignoreScripts: [...ignoreScripts, this.scriptName],
                 });
             }
+        }
+        if (this.onlyScripts) {
+            return new Promise((res, rej) => {
+                this.context.stderr.write('skipping missing script ' + this.scriptName + '\n', (e) => {
+                    if (e) {
+                        rej(e);
+                    }
+                    res(0);
+                });
+                // this.context.stderr.end()
+            });
         }
         const getBins = await __1.memoizer.fn(async (cwd) => {
             let { project, workspace, locator } = await core_1.Project.find(configuration, cwd);
@@ -74572,6 +74584,9 @@ __decorate([
 __decorate([
     clipanion_1.Command.Boolean(`-T,--top-level`, { hidden: true })
 ], RunCommand.prototype, "topLevel", void 0);
+__decorate([
+    clipanion_1.Command.Boolean(`--only-scripts`, { hidden: true })
+], RunCommand.prototype, "onlyScripts", void 0);
 __decorate([
     clipanion_1.Command.Boolean(`-B,--binaries-only`, { hidden: true })
 ], RunCommand.prototype, "binariesOnly", void 0);

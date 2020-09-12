@@ -14,7 +14,7 @@ import {
     xfs,
 } from '@yarnpkg/fslib'
 import chalk from 'chalk'
-import { execSync } from 'child_process'
+import { execSync, exec } from 'child_process'
 import { Command, Usage } from 'clipanion'
 import path from 'path'
 import { memoizer } from '..'
@@ -73,13 +73,14 @@ export default class RunCommand extends BaseCommand {
 
     @Command.Path(`lightrun`)
     async execute() {
-        // console.log('running')
         const configuration = await Configuration.find(
             this.context.cwd,
             this.context.plugins,
         )
+        // console.log(this.context.cwd, )
+        // console.log(configuration.startingCwd)
         // console.log('taken config')
-        const packageJSON = getPackageJSON(this.context.cwd)
+        const packageJSON = getPackageJSON(configuration.startingCwd)
         if (packageJSON) {
             // console.log(this.scriptName, packageJSON.scripts)
             if (this.scriptName in packageJSON.scripts) {
@@ -128,15 +129,29 @@ export default class RunCommand extends BaseCommand {
             //         packageAccessibleBinaries,
             //     )}`,
             // )
-            try {
-                return execSync(binaryName + ' ' + args.join(' '), {
+
+            return new Promise((res, rej) => {
+                const cmd = exec(binaryName + ' ' + args.join(' '), {
                     env: process.env,
-                    stdio: 'inherit',
                 })
-            } catch {
-                console.error(chalk.red(`😢 Exit with error status`))
-                return
-            }
+                cmd.stdout.pipe(this.context.stdout)
+                cmd.stderr.pipe(this.context.stderr)
+                cmd.on('exit', (code) => {
+                    if (code !== 0) {
+                        // this.context.stderr.write(
+                        //     chalk.red(`😢 Exit with error status ${code}`),
+                        //     console.error,
+                        // )
+                    }
+                    res(code)
+                })
+                cmd.on('error', (err) => {
+                    // this.context.stderr.write(
+                    //     chalk.red(`😢 Exit with error: ${err.message}`),
+                    // )
+                    rej(err)
+                })
+            })
         }
 
         return await xfs.mktempPromise(async (binFolder) => {

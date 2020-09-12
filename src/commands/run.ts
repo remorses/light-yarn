@@ -77,13 +77,22 @@ export default class RunCommand extends BaseCommand {
             this.context.cwd,
             this.context.plugins,
         )
-        // console.log(this.context.cwd, )
-        // console.log(configuration.startingCwd)
-        // console.log('taken config')
+        return this.execCommand({
+            args: this.args,
+            binaryName: this.scriptName,
+            configuration,
+        })
+    }
+    async execCommand({ binaryName, configuration, args, ignoreScripts = [] }) {
+
+        // if a script exists in package.json, run that
         const packageJSON = getPackageJSON(configuration.startingCwd)
         if (packageJSON) {
             // console.log(this.scriptName, packageJSON.scripts)
-            if (this.scriptName in packageJSON.scripts) {
+            if (
+                this.scriptName in packageJSON.scripts &&
+                !ignoreScripts.includes(this.scriptName)
+            ) {
                 const content = packageJSON.scripts[this.scriptName]
                 // TODO parse command into args
                 const parsed = content.split(' ')
@@ -91,16 +100,11 @@ export default class RunCommand extends BaseCommand {
                     args: [...parsed.slice(1), ...this.args],
                     binaryName: parsed[0],
                     configuration,
+                    ignoreScripts: [...ignoreScripts, this.scriptName],
                 })
             }
         }
-        return this.execCommand({
-            args: this.args,
-            binaryName: this.scriptName,
-            configuration,
-        })
-    }
-    async execCommand({ binaryName, configuration, args }) {
+
         const getBins = await memoizer.fn(
             async (cwd: PortablePath) => {
                 let { project, workspace, locator } = await Project.find(
@@ -123,6 +127,8 @@ export default class RunCommand extends BaseCommand {
 
         const packageAccessibleBinaries = await getBins(this.context.cwd)
         let binary = packageAccessibleBinaries[binaryName]
+
+        //  if no bin found on packages deps, just run the command
         if (!binary) {
             // console.log(
             //     `no binary for ${binaryName} found in ${Object.keys(
@@ -154,6 +160,7 @@ export default class RunCommand extends BaseCommand {
             })
         }
 
+        // run the dep script with yarn node
         return await xfs.mktempPromise(async (binFolder) => {
             const [, binaryPath] = binary
             const env = await makeScriptEnv({

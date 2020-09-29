@@ -1646,7 +1646,7 @@ exports.pluginCommands = new Map([
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BaseCommand = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(2984);
 const clipanion_1 = __webpack_require__(5392);
 class BaseCommand extends clipanion_1.Command {
 }
@@ -1665,7 +1665,7 @@ exports.BaseCommand = BaseCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.WelcomeCommand = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(2984);
 const core_1 = __webpack_require__(7284);
 const clipanion_1 = __webpack_require__(5392);
 const BaseCommand_1 = __webpack_require__(9745);
@@ -1770,7 +1770,7 @@ exports.getDynamicLibs = () => {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getPluginConfiguration = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(2984);
 // @ts-expect-error
 const package_json_1 = tslib_1.__importDefault(__webpack_require__(7991));
 const getDynamicLibs_1 = __webpack_require__(9076);
@@ -1808,6 +1808,297 @@ exports.openWorkspace = openWorkspace;
 
 /***/ }),
 
+/***/ 2984:
+/***/ ((module) => {
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+/* global global, define, System, Reflect, Promise */
+var __extends;
+var __assign;
+var __rest;
+var __decorate;
+var __param;
+var __metadata;
+var __awaiter;
+var __generator;
+var __exportStar;
+var __values;
+var __read;
+var __spread;
+var __spreadArrays;
+var __await;
+var __asyncGenerator;
+var __asyncDelegator;
+var __asyncValues;
+var __makeTemplateObject;
+var __importStar;
+var __importDefault;
+var __classPrivateFieldGet;
+var __classPrivateFieldSet;
+var __createBinding;
+(function (factory) {
+    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+    if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
+    }
+    else if ( true && typeof module.exports === "object") {
+        factory(createExporter(root, createExporter(module.exports)));
+    }
+    else {
+        factory(createExporter(root));
+    }
+    function createExporter(exports, previous) {
+        if (exports !== root) {
+            if (typeof Object.create === "function") {
+                Object.defineProperty(exports, "__esModule", { value: true });
+            }
+            else {
+                exports.__esModule = true;
+            }
+        }
+        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
+    }
+})
+(function (exporter) {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+
+    __extends = function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+
+    __rest = function (s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    };
+
+    __decorate = function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+
+    __param = function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+
+    __metadata = function (metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    };
+
+    __awaiter = function (thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    };
+
+    __generator = function (thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    };
+
+    __createBinding = function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    };
+
+    __exportStar = function (m, exports) {
+        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+    };
+
+    __values = function (o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    };
+
+    __read = function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
+
+    __spread = function () {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
+
+    __spreadArrays = function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
+
+    __await = function (v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    };
+
+    __asyncGenerator = function (thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    };
+
+    __asyncDelegator = function (o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    };
+
+    __asyncValues = function (o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    };
+
+    __makeTemplateObject = function (cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    __importStar = function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+        result["default"] = mod;
+        return result;
+    };
+
+    __importDefault = function (mod) {
+        return (mod && mod.__esModule) ? mod : { "default": mod };
+    };
+
+    __classPrivateFieldGet = function (receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to get private field on non-instance");
+        }
+        return privateMap.get(receiver);
+    };
+
+    __classPrivateFieldSet = function (receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to set private field on non-instance");
+        }
+        privateMap.set(receiver, value);
+        return value;
+    };
+
+    exporter("__extends", __extends);
+    exporter("__assign", __assign);
+    exporter("__rest", __rest);
+    exporter("__decorate", __decorate);
+    exporter("__param", __param);
+    exporter("__metadata", __metadata);
+    exporter("__awaiter", __awaiter);
+    exporter("__generator", __generator);
+    exporter("__exportStar", __exportStar);
+    exporter("__createBinding", __createBinding);
+    exporter("__values", __values);
+    exporter("__read", __read);
+    exporter("__spread", __spread);
+    exporter("__spreadArrays", __spreadArrays);
+    exporter("__await", __await);
+    exporter("__asyncGenerator", __asyncGenerator);
+    exporter("__asyncDelegator", __asyncDelegator);
+    exporter("__asyncValues", __asyncValues);
+    exporter("__makeTemplateObject", __makeTemplateObject);
+    exporter("__importStar", __importStar);
+    exporter("__importDefault", __importDefault);
+    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
+    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
+});
+
+
+/***/ }),
+
 /***/ 5318:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -1815,7 +2106,7 @@ exports.openWorkspace = openWorkspace;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Cache = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const fslib_2 = __webpack_require__(9374);
 const libzip_1 = __webpack_require__(1347);
@@ -2068,7 +2359,7 @@ function getHashComponent(checksum) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Configuration = exports.ProjectLookup = exports.coreDefinitions = exports.formatColors = exports.FormatType = exports.SettingsType = exports.SECRET = exports.DEFAULT_LOCK_FILENAME = exports.DEFAULT_RC_FILENAME = exports.ENVIRONMENT_PREFIX = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const fslib_2 = __webpack_require__(9374);
 const parsers_1 = __webpack_require__(2737);
@@ -3233,7 +3524,7 @@ Configuration.telemetry = null;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CorePlugin = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const MessageName_1 = __webpack_require__(2873);
 const structUtils = tslib_1.__importStar(__webpack_require__(7289));
 exports.CorePlugin = {
@@ -3302,7 +3593,7 @@ var BuildType;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LegacyMigrationResolver = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const parsers_1 = __webpack_require__(2737);
 const semver_1 = tslib_1.__importDefault(__webpack_require__(1383));
@@ -3503,7 +3794,7 @@ exports.LightReport = LightReport;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LockfileResolver = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const structUtils = tslib_1.__importStar(__webpack_require__(7289));
 class LockfileResolver {
     supportsDescriptor(descriptor, opts) {
@@ -3564,7 +3855,7 @@ exports.LockfileResolver = LockfileResolver;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Manifest = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const parsers_1 = __webpack_require__(2737);
 const semver_1 = tslib_1.__importDefault(__webpack_require__(1383));
@@ -4301,7 +4592,7 @@ var MessageName;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.MultiFetcher = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const MessageName_1 = __webpack_require__(2873);
 const Report_1 = __webpack_require__(3554);
 const structUtils = tslib_1.__importStar(__webpack_require__(7289));
@@ -4347,7 +4638,7 @@ exports.MultiFetcher = MultiFetcher;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.MultiResolver = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const structUtils = tslib_1.__importStar(__webpack_require__(7289));
 class MultiResolver {
     constructor(resolvers) {
@@ -4422,7 +4713,7 @@ exports.MultiResolver = MultiResolver;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Project = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const parsers_1 = __webpack_require__(2737);
 const clipanion_1 = __webpack_require__(5392);
@@ -6054,7 +6345,7 @@ function applyVirtualResolutionMutations({ project, allDescriptors, allResolutio
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProtocolResolver = exports.TAG_REGEXP = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const semver_1 = tslib_1.__importDefault(__webpack_require__(1383));
 const semverUtils = tslib_1.__importStar(__webpack_require__(445));
 const structUtils = tslib_1.__importStar(__webpack_require__(7289));
@@ -6286,7 +6577,7 @@ exports.RunInstallPleaseResolver = RunInstallPleaseResolver;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.StreamReport = exports.formatNameWithHyperlink = exports.formatName = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const slice_ansi_1 = tslib_1.__importDefault(__webpack_require__(5086));
 const MessageName_1 = __webpack_require__(2873);
 const Report_1 = __webpack_require__(3554);
@@ -6742,7 +7033,7 @@ exports.StreamReport = StreamReport;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.TelemetryManager = exports.MetricName = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const httpUtils = tslib_1.__importStar(__webpack_require__(3521));
 const miscUtils = tslib_1.__importStar(__webpack_require__(1902));
@@ -6958,7 +7249,7 @@ exports.ThrowReport = ThrowReport;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.VirtualFetcher = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const structUtils = tslib_1.__importStar(__webpack_require__(7289));
 class VirtualFetcher {
@@ -7073,7 +7364,7 @@ VirtualResolver.protocol = `virtual:`;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Workspace = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const globby_1 = tslib_1.__importDefault(__webpack_require__(3398));
 const semver_1 = tslib_1.__importDefault(__webpack_require__(1383));
@@ -7279,7 +7570,7 @@ exports.YarnVersion = typeof YARN_VERSION !== `undefined`
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.execvp = exports.pipevp = exports.EndStrategy = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const cross_spawn_1 = tslib_1.__importDefault(__webpack_require__(2746));
 var EndStrategy;
@@ -7460,7 +7751,7 @@ exports.isFolderInside = isFolderInside;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.checksumPattern = exports.checksumFile = exports.makeHash = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const crypto_1 = __webpack_require__(6417);
 const globby_1 = tslib_1.__importDefault(__webpack_require__(3398));
@@ -7535,7 +7826,7 @@ exports.checksumPattern = checksumPattern;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.post = exports.put = exports.get = exports.request = exports.Method = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const https_1 = __webpack_require__(7211);
 const http_1 = __webpack_require__(5876);
 const micromatch_1 = tslib_1.__importDefault(__webpack_require__(6228));
@@ -7641,7 +7932,7 @@ exports.post = post;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.tgzUtils = exports.structUtils = exports.semverUtils = exports.scriptUtils = exports.miscUtils = exports.folderUtils = exports.execUtils = exports.httpUtils = exports.hashUtils = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const execUtils = tslib_1.__importStar(__webpack_require__(9437));
 exports.execUtils = execUtils;
 const folderUtils = tslib_1.__importStar(__webpack_require__(4812));
@@ -7713,7 +8004,7 @@ Object.defineProperty(exports, "LinkType", ({ enumerable: true, get: function ()
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.replaceEnvVariables = exports.buildIgnorePattern = exports.sortMap = exports.dynamicRequireNoCache = exports.dynamicRequire = exports.DefaultStream = exports.BufferStream = exports.bufferStream = exports.prettifySyncErrors = exports.prettifyAsyncErrors = exports.releaseAfterUseAsync = exports.getMapWithDefault = exports.getSetWithDefault = exports.getArrayWithDefault = exports.getFactoryWithDefault = exports.isIndexableObject = exports.mapAndFind = exports.mapAndFilter = exports.assertNever = exports.escapeRegExp = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const clipanion_1 = __webpack_require__(5392);
 const micromatch_1 = tslib_1.__importDefault(__webpack_require__(6228));
@@ -7981,7 +8272,7 @@ exports.replaceEnvVariables = replaceEnvVariables;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.builtinModules = exports.dynamicRequire = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const module_1 = tslib_1.__importDefault(__webpack_require__(2282));
 function dynamicRequire(request) {
     const req = typeof require !== `undefined`
@@ -8006,7 +8297,7 @@ exports.builtinModules = builtinModules;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.executeWorkspaceAccessibleBinary = exports.executePackageAccessibleBinary = exports.getWorkspaceAccessibleBinaries = exports.getPackageAccessibleBinaries = exports.maybeExecuteWorkspaceLifecycleScript = exports.executeWorkspaceLifecycleScript = exports.hasWorkspaceScript = exports.executeWorkspaceScript = exports.executePackageShellcode = exports.executePackageScript = exports.hasPackageScript = exports.prepareExternalProject = exports.makeScriptEnv = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const fslib_2 = __webpack_require__(9374);
 const libzip_1 = __webpack_require__(1347);
@@ -8406,7 +8697,7 @@ exports.executeWorkspaceAccessibleBinary = executeWorkspaceAccessibleBinary;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.validRange = exports.satisfiesWithPrereleases = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const semver_1 = tslib_1.__importDefault(__webpack_require__(1383));
 /**
  * Returns whether the given semver version satisfies the given range. Notably
@@ -8484,7 +8775,7 @@ exports.validRange = validRange;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getIdentVendorPath = exports.prettyWorkspace = exports.sortDescriptors = exports.prettyLocatorNoColors = exports.prettyLocator = exports.prettyReference = exports.prettyDescriptor = exports.prettyRange = exports.prettyIdent = exports.slugifyLocator = exports.slugifyIdent = exports.stringifyLocator = exports.stringifyDescriptor = exports.stringifyIdent = exports.requirableIdent = exports.convertToManifestRange = exports.makeRange = exports.parseFileStyleRange = exports.parseRange = exports.tryParseLocator = exports.parseLocator = exports.tryParseDescriptor = exports.parseDescriptor = exports.tryParseIdent = exports.parseIdent = exports.areVirtualPackagesEquivalent = exports.areLocatorsEqual = exports.areDescriptorsEqual = exports.areIdentsEqual = exports.bindLocator = exports.bindDescriptor = exports.devirtualizeLocator = exports.devirtualizeDescriptor = exports.isVirtualLocator = exports.isVirtualDescriptor = exports.virtualizePackage = exports.virtualizeDescriptor = exports.copyPackage = exports.renamePackage = exports.convertPackageToLocator = exports.convertLocatorToDescriptor = exports.convertDescriptorToLocator = exports.convertToIdent = exports.makeLocator = exports.makeDescriptor = exports.makeIdent = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const querystring_1 = tslib_1.__importDefault(__webpack_require__(1191));
 const semver_1 = tslib_1.__importDefault(__webpack_require__(1383));
@@ -8927,7 +9218,7 @@ exports.getIdentVendorPath = getIdentVendorPath;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.extractArchiveTo = exports.convertToZip = exports.makeArchiveFromDirectory = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1364);
 const fslib_1 = __webpack_require__(9374);
 const libzip_1 = __webpack_require__(1347);
 const tar_stream_1 = tslib_1.__importDefault(__webpack_require__(2283));
@@ -9486,6 +9777,297 @@ module.exports = {
 	stringReplaceAll,
 	stringEncaseCRLFWithFirstIndex
 };
+
+
+/***/ }),
+
+/***/ 1364:
+/***/ ((module) => {
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+/* global global, define, System, Reflect, Promise */
+var __extends;
+var __assign;
+var __rest;
+var __decorate;
+var __param;
+var __metadata;
+var __awaiter;
+var __generator;
+var __exportStar;
+var __values;
+var __read;
+var __spread;
+var __spreadArrays;
+var __await;
+var __asyncGenerator;
+var __asyncDelegator;
+var __asyncValues;
+var __makeTemplateObject;
+var __importStar;
+var __importDefault;
+var __classPrivateFieldGet;
+var __classPrivateFieldSet;
+var __createBinding;
+(function (factory) {
+    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+    if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
+    }
+    else if ( true && typeof module.exports === "object") {
+        factory(createExporter(root, createExporter(module.exports)));
+    }
+    else {
+        factory(createExporter(root));
+    }
+    function createExporter(exports, previous) {
+        if (exports !== root) {
+            if (typeof Object.create === "function") {
+                Object.defineProperty(exports, "__esModule", { value: true });
+            }
+            else {
+                exports.__esModule = true;
+            }
+        }
+        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
+    }
+})
+(function (exporter) {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+
+    __extends = function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+
+    __rest = function (s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    };
+
+    __decorate = function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+
+    __param = function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+
+    __metadata = function (metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    };
+
+    __awaiter = function (thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    };
+
+    __generator = function (thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    };
+
+    __createBinding = function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    };
+
+    __exportStar = function (m, exports) {
+        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+    };
+
+    __values = function (o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    };
+
+    __read = function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
+
+    __spread = function () {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
+
+    __spreadArrays = function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
+
+    __await = function (v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    };
+
+    __asyncGenerator = function (thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    };
+
+    __asyncDelegator = function (o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    };
+
+    __asyncValues = function (o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    };
+
+    __makeTemplateObject = function (cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    __importStar = function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+        result["default"] = mod;
+        return result;
+    };
+
+    __importDefault = function (mod) {
+        return (mod && mod.__esModule) ? mod : { "default": mod };
+    };
+
+    __classPrivateFieldGet = function (receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to get private field on non-instance");
+        }
+        return privateMap.get(receiver);
+    };
+
+    __classPrivateFieldSet = function (receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to set private field on non-instance");
+        }
+        privateMap.set(receiver, value);
+        return value;
+    };
+
+    exporter("__extends", __extends);
+    exporter("__assign", __assign);
+    exporter("__rest", __rest);
+    exporter("__decorate", __decorate);
+    exporter("__param", __param);
+    exporter("__metadata", __metadata);
+    exporter("__awaiter", __awaiter);
+    exporter("__generator", __generator);
+    exporter("__exportStar", __exportStar);
+    exporter("__createBinding", __createBinding);
+    exporter("__values", __values);
+    exporter("__read", __read);
+    exporter("__spread", __spread);
+    exporter("__spreadArrays", __spreadArrays);
+    exporter("__await", __await);
+    exporter("__asyncGenerator", __asyncGenerator);
+    exporter("__asyncDelegator", __asyncDelegator);
+    exporter("__asyncValues", __asyncValues);
+    exporter("__makeTemplateObject", __makeTemplateObject);
+    exporter("__importStar", __importStar);
+    exporter("__importDefault", __importDefault);
+    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
+    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
+});
 
 
 /***/ }),
@@ -10251,7 +10833,7 @@ NoFS.instance = new NoFS();
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NodeFS = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1894);
 const fs_1 = tslib_1.__importDefault(__webpack_require__(5747));
 const FakeFS_1 = __webpack_require__(3719);
 const errors_1 = __webpack_require__(3928);
@@ -10934,7 +11516,7 @@ exports.VirtualFS = VirtualFS;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ZipFS = exports.DEFAULT_COMPRESSION_LEVEL = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1894);
 const fs_1 = __webpack_require__(5747);
 const stream_1 = __webpack_require__(2413);
 const util_1 = __webpack_require__(1669);
@@ -12802,7 +13384,7 @@ exports.ZipOpenFS = ZipOpenFS;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.copyPromise = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1894);
 const fs_1 = tslib_1.__importDefault(__webpack_require__(5747));
 const path_1 = __webpack_require__(3067);
 // 1980-01-01, like Fedora
@@ -13006,7 +13588,7 @@ exports.unwatchAllFiles = unwatchAllFiles;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CustomStatWatcher = exports.assertStatus = exports.Status = exports.Event = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1894);
 const events_1 = __webpack_require__(8614);
 const statUtils = tslib_1.__importStar(__webpack_require__(3423));
 var Event;
@@ -13234,7 +13816,7 @@ exports.LibzipError = LibzipError;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.xfs = exports.extendFs = exports.patchFs = exports.statUtils = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1894);
 const os_1 = tslib_1.__importDefault(__webpack_require__(2087));
 const util_1 = __webpack_require__(1669);
 const NodeFS_1 = __webpack_require__(1206);
@@ -13610,7 +14192,7 @@ exports.xfs = Object.assign(new NodeFS_1.NodeFS(), {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.toFilename = exports.convertPath = exports.ppath = exports.npath = exports.Filename = exports.PortablePath = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(1894);
 const path_1 = tslib_1.__importDefault(__webpack_require__(5622));
 var PathType;
 (function (PathType) {
@@ -13841,6 +14423,297 @@ function areStatsEqual(a, b) {
     return true;
 }
 exports.areStatsEqual = areStatsEqual;
+
+
+/***/ }),
+
+/***/ 1894:
+/***/ ((module) => {
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+/* global global, define, System, Reflect, Promise */
+var __extends;
+var __assign;
+var __rest;
+var __decorate;
+var __param;
+var __metadata;
+var __awaiter;
+var __generator;
+var __exportStar;
+var __values;
+var __read;
+var __spread;
+var __spreadArrays;
+var __await;
+var __asyncGenerator;
+var __asyncDelegator;
+var __asyncValues;
+var __makeTemplateObject;
+var __importStar;
+var __importDefault;
+var __classPrivateFieldGet;
+var __classPrivateFieldSet;
+var __createBinding;
+(function (factory) {
+    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+    if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
+    }
+    else if ( true && typeof module.exports === "object") {
+        factory(createExporter(root, createExporter(module.exports)));
+    }
+    else {
+        factory(createExporter(root));
+    }
+    function createExporter(exports, previous) {
+        if (exports !== root) {
+            if (typeof Object.create === "function") {
+                Object.defineProperty(exports, "__esModule", { value: true });
+            }
+            else {
+                exports.__esModule = true;
+            }
+        }
+        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
+    }
+})
+(function (exporter) {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+
+    __extends = function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+
+    __rest = function (s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    };
+
+    __decorate = function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+
+    __param = function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+
+    __metadata = function (metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    };
+
+    __awaiter = function (thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    };
+
+    __generator = function (thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    };
+
+    __createBinding = function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    };
+
+    __exportStar = function (m, exports) {
+        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+    };
+
+    __values = function (o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    };
+
+    __read = function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
+
+    __spread = function () {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
+
+    __spreadArrays = function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
+
+    __await = function (v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    };
+
+    __asyncGenerator = function (thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    };
+
+    __asyncDelegator = function (o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    };
+
+    __asyncValues = function (o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    };
+
+    __makeTemplateObject = function (cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    __importStar = function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+        result["default"] = mod;
+        return result;
+    };
+
+    __importDefault = function (mod) {
+        return (mod && mod.__esModule) ? mod : { "default": mod };
+    };
+
+    __classPrivateFieldGet = function (receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to get private field on non-instance");
+        }
+        return privateMap.get(receiver);
+    };
+
+    __classPrivateFieldSet = function (receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to set private field on non-instance");
+        }
+        privateMap.set(receiver, value);
+        return value;
+    };
+
+    exporter("__extends", __extends);
+    exporter("__assign", __assign);
+    exporter("__rest", __rest);
+    exporter("__decorate", __decorate);
+    exporter("__param", __param);
+    exporter("__metadata", __metadata);
+    exporter("__awaiter", __awaiter);
+    exporter("__generator", __generator);
+    exporter("__exportStar", __exportStar);
+    exporter("__createBinding", __createBinding);
+    exporter("__values", __values);
+    exporter("__read", __read);
+    exporter("__spread", __spread);
+    exporter("__spreadArrays", __spreadArrays);
+    exporter("__await", __await);
+    exporter("__asyncGenerator", __asyncGenerator);
+    exporter("__asyncDelegator", __asyncDelegator);
+    exporter("__asyncValues", __asyncValues);
+    exporter("__makeTemplateObject", __makeTemplateObject);
+    exporter("__importStar", __importStar);
+    exporter("__importDefault", __importDefault);
+    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
+    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
+});
 
 
 /***/ }),
@@ -24026,7 +24899,7 @@ exports.parseSyml = parseSyml;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.execute = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(9596);
 const fslib_1 = __webpack_require__(9374);
 const parsers_1 = __webpack_require__(2737);
 const fast_glob_1 = tslib_1.__importDefault(__webpack_require__(3664));
@@ -24749,7 +25622,7 @@ exports.execute = execute;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.start = exports.Handle = exports.ProtectedStream = exports.makeBuiltin = exports.makeProcess = exports.Pipe = void 0;
-const tslib_1 = __webpack_require__(4351);
+const tslib_1 = __webpack_require__(9596);
 const cross_spawn_1 = tslib_1.__importDefault(__webpack_require__(2746));
 const stream_1 = __webpack_require__(2413);
 var Pipe;
@@ -24971,6 +25844,297 @@ function start(p, opts) {
     return Handle.start(p, opts);
 }
 exports.start = start;
+
+
+/***/ }),
+
+/***/ 9596:
+/***/ ((module) => {
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+/* global global, define, System, Reflect, Promise */
+var __extends;
+var __assign;
+var __rest;
+var __decorate;
+var __param;
+var __metadata;
+var __awaiter;
+var __generator;
+var __exportStar;
+var __values;
+var __read;
+var __spread;
+var __spreadArrays;
+var __await;
+var __asyncGenerator;
+var __asyncDelegator;
+var __asyncValues;
+var __makeTemplateObject;
+var __importStar;
+var __importDefault;
+var __classPrivateFieldGet;
+var __classPrivateFieldSet;
+var __createBinding;
+(function (factory) {
+    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+    if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
+    }
+    else if ( true && typeof module.exports === "object") {
+        factory(createExporter(root, createExporter(module.exports)));
+    }
+    else {
+        factory(createExporter(root));
+    }
+    function createExporter(exports, previous) {
+        if (exports !== root) {
+            if (typeof Object.create === "function") {
+                Object.defineProperty(exports, "__esModule", { value: true });
+            }
+            else {
+                exports.__esModule = true;
+            }
+        }
+        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
+    }
+})
+(function (exporter) {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+
+    __extends = function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+
+    __rest = function (s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    };
+
+    __decorate = function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+
+    __param = function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+
+    __metadata = function (metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    };
+
+    __awaiter = function (thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    };
+
+    __generator = function (thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    };
+
+    __createBinding = function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    };
+
+    __exportStar = function (m, exports) {
+        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+    };
+
+    __values = function (o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    };
+
+    __read = function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
+
+    __spread = function () {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
+
+    __spreadArrays = function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
+
+    __await = function (v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    };
+
+    __asyncGenerator = function (thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    };
+
+    __asyncDelegator = function (o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    };
+
+    __asyncValues = function (o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    };
+
+    __makeTemplateObject = function (cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    __importStar = function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+        result["default"] = mod;
+        return result;
+    };
+
+    __importDefault = function (mod) {
+        return (mod && mod.__esModule) ? mod : { "default": mod };
+    };
+
+    __classPrivateFieldGet = function (receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to get private field on non-instance");
+        }
+        return privateMap.get(receiver);
+    };
+
+    __classPrivateFieldSet = function (receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to set private field on non-instance");
+        }
+        privateMap.set(receiver, value);
+        return value;
+    };
+
+    exporter("__extends", __extends);
+    exporter("__assign", __assign);
+    exporter("__rest", __rest);
+    exporter("__decorate", __decorate);
+    exporter("__param", __param);
+    exporter("__metadata", __metadata);
+    exporter("__awaiter", __awaiter);
+    exporter("__generator", __generator);
+    exporter("__exportStar", __exportStar);
+    exporter("__createBinding", __createBinding);
+    exporter("__values", __values);
+    exporter("__read", __read);
+    exporter("__spread", __spread);
+    exporter("__spreadArrays", __spreadArrays);
+    exporter("__await", __await);
+    exporter("__asyncGenerator", __asyncGenerator);
+    exporter("__asyncDelegator", __asyncDelegator);
+    exporter("__asyncValues", __asyncValues);
+    exporter("__makeTemplateObject", __makeTemplateObject);
+    exporter("__importStar", __importStar);
+    exporter("__importDefault", __importDefault);
+    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
+    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
+});
 
 
 /***/ }),
@@ -27885,266 +29049,6 @@ function checkEnv (obj) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 
-class Command {
-    constructor() {
-        /**
-         * Predefined that will be set to true if `-h,--help` has been used, in which case `Command#execute` shouldn't be called.
-         */
-        this.help = false;
-    }
-    static getMeta(prototype) {
-        const base = prototype.constructor;
-        return base.meta = Object.prototype.hasOwnProperty.call(base, `meta`) ? base.meta : {
-            definitions: [],
-            transformers: [
-                (state, command) => {
-                    for (const { name, value } of state.options) {
-                        if (name === `-h` || name === `--help`) {
-                            // @ts-ignore: The property is meant to have been defined by the child class
-                            command.help = value;
-                        }
-                    }
-                },
-            ],
-        };
-    }
-    static resolveMeta(prototype) {
-        const definitions = [];
-        const transformers = [];
-        for (let proto = prototype; proto instanceof Command; proto = proto.__proto__) {
-            const meta = this.getMeta(proto);
-            for (const definition of meta.definitions)
-                definitions.push(definition);
-            for (const transformer of meta.transformers) {
-                transformers.push(transformer);
-            }
-        }
-        return {
-            definitions,
-            transformers,
-        };
-    }
-    static registerDefinition(prototype, definition) {
-        this.getMeta(prototype).definitions.push(definition);
-    }
-    static registerTransformer(prototype, transformer) {
-        this.getMeta(prototype).transformers.push(transformer);
-    }
-    static addPath(...path) {
-        this.Path(...path)(this.prototype, `execute`);
-    }
-    static addOption(name, builder) {
-        builder(this.prototype, name);
-    }
-    /**
-     * Wrap the specified command to be attached to the given path on the command line.
-     * The first path thus attached will be considered the "main" one, and all others will be aliases.
-     * @param path The command path.
-     */
-    static Path(...path) {
-        return (prototype, propertyName) => {
-            this.registerDefinition(prototype, command => {
-                command.addPath(path);
-            });
-        };
-    }
-    /**
-     * Register a boolean listener for the given option names. When Clipanion detects that this argument is present, the value will be set to false. The value won't be set unless the option is found, so you must remember to set it to an appropriate default value.
-     * @param descriptor the option names.
-     */
-    static Boolean(descriptor, { hidden = false } = {}) {
-        return (prototype, propertyName) => {
-            const optNames = descriptor.split(`,`);
-            this.registerDefinition(prototype, command => {
-                command.addOption({ names: optNames, arity: 0, hidden, allowBinding: false });
-            });
-            this.registerTransformer(prototype, (state, command) => {
-                for (const { name, value } of state.options) {
-                    if (optNames.includes(name)) {
-                        // @ts-ignore: The property is meant to have been defined by the child class
-                        command[propertyName] = value;
-                    }
-                }
-            });
-        };
-    }
-    static String(descriptor = {}, { tolerateBoolean = false, hidden = false } = {}) {
-        return (prototype, propertyName) => {
-            if (typeof descriptor === `string`) {
-                const optNames = descriptor.split(`,`);
-                this.registerDefinition(prototype, command => {
-                    // If tolerateBoolean is specified, the command will only accept a string value
-                    // using the bind syntax and will otherwise act like a boolean option
-                    command.addOption({ names: optNames, arity: tolerateBoolean ? 0 : 1, hidden });
-                });
-                this.registerTransformer(prototype, (state, command) => {
-                    for (const { name, value } of state.options) {
-                        if (optNames.includes(name)) {
-                            // @ts-ignore: The property is meant to have been defined by the child class
-                            command[propertyName] = value;
-                        }
-                    }
-                });
-            }
-            else {
-                this.registerDefinition(prototype, command => {
-                    var _a;
-                    command.addPositional({ name: (_a = descriptor.name) !== null && _a !== void 0 ? _a : propertyName, required: descriptor.required !== false });
-                });
-                this.registerTransformer(prototype, (state, command) => {
-                    if (state.positionals.length > 0) {
-                        // @ts-ignore: The property is meant to have been defined by the child class
-                        command[propertyName] = state.positionals.shift().value;
-                    }
-                });
-            }
-        };
-    }
-    /**
-     * Register a listener that looks for an option and its followup argument. When Clipanion detects that this argument is present, the value will be pushed into the array represented in the property.
-     */
-    static Array(descriptor, { hidden = false } = {}) {
-        return (prototype, propertyName) => {
-            const optNames = descriptor.split(`,`);
-            this.registerDefinition(prototype, command => {
-                command.addOption({ names: optNames, arity: 1, hidden });
-            });
-            this.registerTransformer(prototype, (state, command) => {
-                for (const { name, value } of state.options) {
-                    if (optNames.includes(name)) {
-                        // @ts-ignore: The property is meant to have been defined by the child class
-                        command[propertyName] = command[propertyName] || [];
-                        // @ts-ignore: The property is meant to have been defined by the child class
-                        command[propertyName].push(value);
-                    }
-                }
-            });
-        };
-    }
-    static Rest({ required = 0 } = {}) {
-        return (prototype, propertyName) => {
-            this.registerDefinition(prototype, command => {
-                command.addRest({ name: propertyName, required });
-            });
-            this.registerTransformer(prototype, (state, command) => {
-                // @ts-ignore: The property is meant to have been defined by the child class
-                command[propertyName] = state.positionals.map(({ value }) => value);
-            });
-        };
-    }
-    /**
-     * Register a listener that takes all the arguments remaining (including options and such) and store them into the selected property.
-     * Note that all methods affecting positional arguments are evaluated in the definition order; don't mess with it (for example sorting your properties in ascendent order might have adverse results).
-     */
-    static Proxy({ required = 0 } = {}) {
-        return (prototype, propertyName) => {
-            this.registerDefinition(prototype, command => {
-                command.addProxy({ required });
-            });
-            this.registerTransformer(prototype, (state, command) => {
-                // @ts-ignore: The property is meant to have been defined by the child class
-                command[propertyName] = state.positionals.map(({ value }) => value);
-            });
-        };
-    }
-    /**
-     * Defines the usage information for the given command.
-     * @param usage
-     */
-    static Usage(usage) {
-        return usage;
-    }
-    /**
-     * Defines the schema for the given command.
-     * @param schema
-     */
-    static Schema(schema) {
-        return schema;
-    }
-    /**
-     * Standard error handler which will simply rethrow the error. Can be used to add custom logic to handle errors
-     * from the command or simply return the parent class error handling.
-     * @param error
-     */
-    async catch(error) {
-        throw error;
-    }
-    async validateAndExecute() {
-        const commandClass = this.constructor;
-        const schema = commandClass.schema;
-        if (typeof schema !== `undefined`) {
-            try {
-                await schema.validate(this);
-            }
-            catch (error) {
-                if (error.name === `ValidationError`)
-                    error.clipanion = { type: `usage` };
-                throw error;
-            }
-        }
-        const exitCode = await this.execute();
-        if (typeof exitCode !== `undefined`) {
-            return exitCode;
-        }
-        else {
-            return 0;
-        }
-    }
-}
-/**
- * A list of useful semi-opinionated command entries that have to be registered manually.
- *
- * They cover the basic needs of most CLIs (e.g. help command, version command).
- *
- * @example
- * cli.register(Command.Entries.Help);
- * cli.register(Command.Entries.Version);
- */
-Command.Entries = {};
-
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-class HelpCommand extends Command {
-    async execute() {
-        this.context.stdout.write(this.cli.usage(null));
-    }
-}
-__decorate([
-    Command.Path(`--help`),
-    Command.Path(`-h`)
-], HelpCommand.prototype, "execute", null);
-
-class VersionCommand extends Command {
-    async execute() {
-        var _a;
-        this.context.stdout.write(`${(_a = this.cli.binaryVersion) !== null && _a !== void 0 ? _a : `<unknown>`}\n`);
-    }
-}
-__decorate([
-    Command.Path(`--version`),
-    Command.Path(`-v`)
-], VersionCommand.prototype, "execute", null);
-
 const NODE_INITIAL = 0;
 const NODE_SUCCESS = 1;
 const NODE_ERRORED = 2;
@@ -28224,6 +29128,16 @@ function debug(str) {
         console.log(str);
     }
 }
+const basicHelpState = {
+    candidateUsage: null,
+    errorMessage: null,
+    ignoreOptions: false,
+    path: [],
+    positionals: [],
+    options: [],
+    remainder: null,
+    selectedIndex: HELP_COMMAND_INDEX
+};
 function makeStateMachine() {
     return {
         nodes: [makeNode(), makeNode(), makeNode()],
@@ -28365,6 +29279,12 @@ function runMachineInternal(machine, input, partial = false) {
                     }
                 }
             }
+        }
+        if (nextBranches.length === 0 && segment === END_OF_INPUT && input.length === 1) {
+            return [{
+                    node: NODE_INITIAL,
+                    state: basicHelpState,
+                }];
         }
         if (nextBranches.length === 0) {
             throw new UnknownSyntaxError(input, branches.filter(({ node }) => {
@@ -28519,16 +29439,7 @@ function aggregateHelpStates(states) {
         }
     }
     if (helps.length > 0) {
-        notHelps.push({
-            candidateUsage: null,
-            errorMessage: null,
-            ignoreOptions: false,
-            path: findCommonPrefix(...helps.map(state => state.path)),
-            positionals: [],
-            options: helps.reduce((options, state) => options.concat(state.options), []),
-            remainder: null,
-            selectedIndex: HELP_COMMAND_INDEX,
-        });
+        notHelps.push(Object.assign(Object.assign({}, basicHelpState), { path: findCommonPrefix(...helps.map(state => state.path)), options: helps.reduce((options, state) => options.concat(state.options), []) }));
     }
     return notHelps;
 }
@@ -28564,18 +29475,23 @@ function cloneNode(input, offset = 0) {
     return output;
 }
 function registerDynamic(machine, from, test, to, reducer) {
-    machine.nodes[from].dynamics.push([test, { to, reducer }]);
+    machine.nodes[from].dynamics.push([
+        test,
+        { to, reducer: reducer }
+    ]);
 }
 function registerShortcut(machine, from, to, reducer) {
-    machine.nodes[from].shortcuts.push({ to, reducer });
+    machine.nodes[from].shortcuts.push({ to, reducer: reducer });
 }
 function registerStatic(machine, from, test, to, reducer) {
     let store = !Object.prototype.hasOwnProperty.call(machine.nodes[from].statics, test)
         ? machine.nodes[from].statics[test] = []
         : machine.nodes[from].statics[test];
-    store.push({ to, reducer });
+    store.push({ to, reducer: reducer });
 }
 function execute(store, callback, state, segment) {
+    // TypeScript's control flow can't properly narrow
+    // generic conditionals for some mysterious reason
     if (Array.isArray(callback)) {
         const [name, ...args] = callback;
         return store[name](state, segment, ...args);
@@ -28600,6 +29516,9 @@ function suggest(callback, state) {
 const tests = {
     always: () => {
         return true;
+    },
+    isOptionLike: (state, segment) => {
+        return !state.ignoreOptions && segment.startsWith(`-`);
     },
     isNotOptionLike: (state, segment) => {
         return state.ignoreOptions || !segment.startsWith(`-`);
@@ -28656,6 +29575,9 @@ const reducers = {
     pushExtra: (state, segment) => {
         return Object.assign(Object.assign({}, state), { positionals: state.positionals.concat({ value: segment, extra: true }) });
     },
+    pushExtraNoLimits: (state, segment) => {
+        return Object.assign(Object.assign({}, state), { positionals: state.positionals.concat({ value: segment, extra: NoLimits }) });
+    },
     pushTrue: (state, segment, name = segment) => {
         return Object.assign(Object.assign({}, state), { options: state.options.concat({ name: segment, value: true }) });
     },
@@ -28665,8 +29587,18 @@ const reducers = {
     pushUndefined: (state, segment) => {
         return Object.assign(Object.assign({}, state), { options: state.options.concat({ name: segment, value: undefined }) });
     },
+    pushStringValue: (state, segment) => {
+        var _a;
+        const copy = Object.assign(Object.assign({}, state), { options: [...state.options] });
+        const lastOption = state.options[state.options.length - 1];
+        lastOption.value = ((_a = lastOption.value) !== null && _a !== void 0 ? _a : []).concat([segment]);
+        return copy;
+    },
     setStringValue: (state, segment) => {
-        return Object.assign(Object.assign({}, state), { options: state.options.slice(0, -1).concat(Object.assign(Object.assign({}, state.options[state.options.length - 1]), { value: segment })) });
+        const copy = Object.assign(Object.assign({}, state), { options: [...state.options] });
+        const lastOption = state.options[state.options.length - 1];
+        lastOption.value = segment;
+        return copy;
     },
     inhibateOptions: (state) => {
         return Object.assign(Object.assign({}, state), { ignoreOptions: true });
@@ -28687,6 +29619,10 @@ const reducers = {
         else {
             return Object.assign(Object.assign({}, state), { errorMessage: `${errorMessage} ("${segment}").` });
         }
+    },
+    setOptionArityError: (state, segment) => {
+        const lastOption = state.options[state.options.length - 1];
+        return Object.assign(Object.assign({}, state), { errorMessage: `Not enough arguments to option ${lastOption.name}.` });
     },
 };
 // ------------------------------------------------------------------------
@@ -28734,25 +29670,38 @@ class CommandBuilder {
         this.addRest({ required });
         this.arity.proxy = true;
     }
-    addOption({ names, arity = 0, hidden = false, allowBinding = true }) {
+    addOption({ names, description, arity = 0, hidden = false, allowBinding = true }) {
+        if (!allowBinding && arity > 1)
+            throw new Error(`The arity cannot be higher than 1 when the option only supports the --arg=value syntax`);
+        if (!Number.isInteger(arity))
+            throw new Error(`The arity must be an integer, got ${arity}`);
+        if (arity < 0)
+            throw new Error(`The arity must be positive, got ${arity}`);
         this.allOptionNames.push(...names);
-        this.options.push({ names, arity, hidden, allowBinding });
+        this.options.push({ names, description, arity, hidden, allowBinding });
     }
     setContext(context) {
         this.context = context;
     }
-    usage({ detailed = true } = {}) {
+    usage({ detailed = true, inlineOptions = true } = {}) {
         const segments = [this.cliOpts.binaryName];
+        const detailedOptionList = [];
         if (this.paths.length > 0)
             segments.push(...this.paths[0]);
         if (detailed) {
-            for (const { names, arity, hidden } of this.options) {
+            for (const { names, arity, hidden, description } of this.options) {
                 if (hidden)
                     continue;
                 const args = [];
                 for (let t = 0; t < arity; ++t)
                     args.push(` #${t}`);
-                segments.push(`[${names.join(`,`)}${args.join(``)}]`);
+                const definition = `${names.join(`,`)}${args.join(``)}`;
+                if (!inlineOptions && description) {
+                    detailedOptionList.push({ definition, description });
+                }
+                else {
+                    segments.push(`[${definition}]`);
+                }
             }
             segments.push(...this.arity.leading.map(name => `<${name}>`));
             if (this.arity.extra === NoLimits)
@@ -28761,7 +29710,8 @@ class CommandBuilder {
                 segments.push(...this.arity.extra.map(name => `[${name}]`));
             segments.push(...this.arity.trailing.map(name => `<${name}>`));
         }
-        return segments.join(` `);
+        let usage = segments.join(` `);
+        return { usage, options: detailedOptionList };
     }
     compile() {
         if (typeof this.context === `undefined`)
@@ -28769,7 +29719,7 @@ class CommandBuilder {
         const machine = makeStateMachine();
         let firstNode = NODE_INITIAL;
         firstNode = injectNode(machine, makeNode());
-        registerStatic(machine, NODE_INITIAL, START_OF_INPUT, firstNode, [`setCandidateUsage`, this.usage()]);
+        registerStatic(machine, NODE_INITIAL, START_OF_INPUT, firstNode, [`setCandidateUsage`, this.usage().usage]);
         const positionalArgument = this.arity.proxy
             ? `always`
             : `isNotOptionLike`;
@@ -28818,8 +29768,8 @@ class CommandBuilder {
                     const extraNode = injectNode(machine, makeNode());
                     if (!this.arity.proxy)
                         this.registerOptions(machine, extraNode);
-                    registerDynamic(machine, lastLeadingNode, positionalArgument, extraNode, `pushExtra`);
-                    registerDynamic(machine, extraNode, positionalArgument, extraNode, `pushExtra`);
+                    registerDynamic(machine, lastLeadingNode, positionalArgument, extraNode, `pushExtraNoLimits`);
+                    registerDynamic(machine, extraNode, positionalArgument, extraNode, `pushExtraNoLimits`);
                     registerShortcut(machine, extraNode, extraShortcutNode);
                 }
                 else {
@@ -28867,20 +29817,35 @@ class CommandBuilder {
             if (option.arity === 0) {
                 for (const name of option.names) {
                     registerDynamic(machine, node, [`isOption`, name, option.hidden || name !== longestName], node, `pushTrue`);
-                    if (name.startsWith(`--`)) {
-                        registerDynamic(machine, node, [`isNegatedOption`, name, option.hidden || name !== longestName], node, [`pushFalse`, name]);
+                    if (name.startsWith(`--`) && !name.startsWith(`--no-`)) {
+                        registerDynamic(machine, node, [`isNegatedOption`, name], node, [`pushFalse`, name]);
                     }
                 }
             }
-            else if (option.arity === 1) {
-                const argNode = injectNode(machine, makeNode());
-                registerDynamic(machine, argNode, `isNotOptionLike`, node, `setStringValue`);
-                for (const name of option.names) {
-                    registerDynamic(machine, node, [`isOption`, name, option.hidden || name !== longestName], argNode, `pushUndefined`);
-                }
-            }
             else {
-                throw new Error(`Unsupported option arity (${option.arity})`);
+                // We inject a new node at the end of the state machine
+                let lastNode = injectNode(machine, makeNode());
+                // We register transitions from the starting node to this new node
+                for (const name of option.names) {
+                    registerDynamic(machine, node, [`isOption`, name, option.hidden || name !== longestName], lastNode, `pushUndefined`);
+                }
+                // For each argument, we inject a new node at the end and we
+                // register a transition from the current node to this new node
+                for (let t = 0; t < option.arity; ++t) {
+                    const nextNode = injectNode(machine, makeNode());
+                    // We can provide better errors when another option or END_OF_INPUT is encountered
+                    registerStatic(machine, lastNode, END_OF_INPUT, NODE_ERRORED, `setOptionArityError`);
+                    registerDynamic(machine, lastNode, `isOptionLike`, NODE_ERRORED, `setOptionArityError`);
+                    // If the option has a single argument, no need to store it in an array
+                    const action = option.arity === 1
+                        ? `setStringValue`
+                        : `pushStringValue`;
+                    registerDynamic(machine, lastNode, `isNotOptionLike`, nextNode, action);
+                    lastNode = nextNode;
+                }
+                // In the end, we register a shortcut from
+                // the last node back to the starting node
+                registerShortcut(machine, lastNode, node);
             }
         }
     }
@@ -28931,6 +29896,335 @@ class CliBuilder {
     }
 }
 
+class Command {
+    constructor() {
+        /**
+         * Predefined that will be set to true if `-h,--help` has been used, in which case `Command#execute` shouldn't be called.
+         */
+        this.help = false;
+    }
+    static getMeta(prototype) {
+        const base = prototype.constructor;
+        return base.meta = Object.prototype.hasOwnProperty.call(base, `meta`) ? base.meta : {
+            definitions: [],
+            transformers: [
+                (state, command) => {
+                    for (const { name, value } of state.options) {
+                        if (name === `-h` || name === `--help`) {
+                            // @ts-ignore: The property is meant to have been defined by the child class
+                            command.help = value;
+                        }
+                    }
+                },
+            ],
+        };
+    }
+    static resolveMeta(prototype) {
+        const definitions = [];
+        const transformers = [];
+        for (let proto = prototype; proto instanceof Command; proto = proto.__proto__) {
+            const meta = this.getMeta(proto);
+            for (const definition of meta.definitions)
+                definitions.push(definition);
+            for (const transformer of meta.transformers) {
+                transformers.push(transformer);
+            }
+        }
+        return {
+            definitions,
+            transformers,
+        };
+    }
+    static registerDefinition(prototype, definition) {
+        this.getMeta(prototype).definitions.push(definition);
+    }
+    static registerTransformer(prototype, transformer) {
+        this.getMeta(prototype).transformers.push(transformer);
+    }
+    static addPath(...path) {
+        this.Path(...path)(this.prototype, `execute`);
+    }
+    static addOption(name, builder) {
+        builder(this.prototype, name);
+    }
+    /**
+     * Wrap the specified command to be attached to the given path on the command line.
+     * The first path thus attached will be considered the "main" one, and all others will be aliases.
+     * @param path The command path.
+     */
+    static Path(...path) {
+        return (prototype, propertyName) => {
+            this.registerDefinition(prototype, command => {
+                command.addPath(path);
+            });
+        };
+    }
+    /**
+     * Register a boolean listener for the given option names. When Clipanion detects that this argument is present, the value will be set to false. The value won't be set unless the option is found, so you must remember to set it to an appropriate default value.
+     * @param descriptor the option names.
+     */
+    static Boolean(descriptor, { hidden = false, description } = {}) {
+        return (prototype, propertyName) => {
+            const optNames = descriptor.split(`,`);
+            this.registerDefinition(prototype, command => {
+                command.addOption({ names: optNames, arity: 0, hidden, allowBinding: false, description });
+            });
+            this.registerTransformer(prototype, (state, command) => {
+                for (const { name, value } of state.options) {
+                    if (optNames.includes(name)) {
+                        // @ts-ignore: The property is meant to have been defined by the child class
+                        command[propertyName] = value;
+                    }
+                }
+            });
+        };
+    }
+    /**
+     * Register a boolean listener for the given option names. Each time Clipanion detects that this argument is present, the counter will be incremented. Each time the argument is negated, the counter will be reset to `0`. The counter won't be set unless the option is found, so you must remember to set it to an appropriate default value.
+
+     * @param descriptor A comma-separated list of option names.
+     */
+    static Counter(descriptor, { hidden = false, description } = {}) {
+        return (prototype, propertyName) => {
+            const optNames = descriptor.split(`,`);
+            this.registerDefinition(prototype, command => {
+                command.addOption({ names: optNames, arity: 0, hidden, allowBinding: false, description });
+            });
+            this.registerTransformer(prototype, (state, command) => {
+                var _a;
+                for (const { name, value } of state.options) {
+                    if (optNames.includes(name)) {
+                        // @ts-ignore: The property is meant to have been defined by the child class
+                        (_a = command[propertyName]) !== null && _a !== void 0 ? _a : (command[propertyName] = 0);
+                        // Negated options reset the counter
+                        if (!value) {
+                            // @ts-ignore: The property is meant to have been defined by the child class
+                            command[propertyName] = 0;
+                        }
+                        else {
+                            // @ts-ignore: The property is meant to have been defined by the child class
+                            command[propertyName]++;
+                        }
+                    }
+                }
+            });
+        };
+    }
+    static String(descriptor = {}, { arity = 1, tolerateBoolean = false, hidden = false, description } = {}) {
+        return (prototype, propertyName) => {
+            if (typeof descriptor === `string`) {
+                const optNames = descriptor.split(`,`);
+                this.registerDefinition(prototype, command => {
+                    // If tolerateBoolean is specified, the command will only accept a string value
+                    // using the bind syntax and will otherwise act like a boolean option
+                    command.addOption({ names: optNames, arity: tolerateBoolean ? 0 : arity, hidden, description });
+                });
+                this.registerTransformer(prototype, (state, command) => {
+                    for (const { name, value } of state.options) {
+                        if (optNames.includes(name)) {
+                            // @ts-ignore: The property is meant to have been defined by the child class
+                            command[propertyName] = value;
+                        }
+                    }
+                });
+            }
+            else {
+                const { name = propertyName, required = true } = descriptor;
+                this.registerDefinition(prototype, command => {
+                    command.addPositional({ name, required });
+                });
+                this.registerTransformer(prototype, (state, command) => {
+                    for (let i = 0; i < state.positionals.length; ++i) {
+                        // We skip NoLimits extras. We only care about
+                        // required and optional finite positionals.
+                        if (state.positionals[i].extra === NoLimits)
+                            continue;
+                        // We skip optional positionals when we only
+                        // care about required positionals.
+                        if (required && state.positionals[i].extra === true)
+                            continue;
+                        // We skip required positionals when we only
+                        // care about optional positionals.
+                        if (!required && state.positionals[i].extra === false)
+                            continue;
+                        // We remove the positional from the list
+                        const [positional] = state.positionals.splice(i, 1);
+                        // We assign its value to the property.
+                        // @ts-ignore: The property is meant to have been defined by the child class
+                        command[propertyName] = positional.value;
+                        // We stop after the first successful iteration.
+                        break;
+                    }
+                });
+            }
+        };
+    }
+    /**
+     * Register a listener that looks for an option and its followup argument. When Clipanion detects that this argument is present, the value will be pushed into the array represented in the property.
+     */
+    static Array(descriptor, { arity = 1, hidden = false, description } = {}) {
+        return (prototype, propertyName) => {
+            if (arity === 0)
+                throw new Error(`Array options are expected to have at least an arity of 1`);
+            const optNames = descriptor.split(`,`);
+            this.registerDefinition(prototype, command => {
+                command.addOption({ names: optNames, arity, hidden, description });
+            });
+            this.registerTransformer(prototype, (state, command) => {
+                for (const { name, value } of state.options) {
+                    if (optNames.includes(name)) {
+                        // @ts-ignore: The property is meant to have been defined by the child class
+                        command[propertyName] = command[propertyName] || [];
+                        // @ts-ignore: The property is meant to have been defined by the child class
+                        command[propertyName].push(value);
+                    }
+                }
+            });
+        };
+    }
+    static Rest({ required = 0 } = {}) {
+        return (prototype, propertyName) => {
+            this.registerDefinition(prototype, command => {
+                command.addRest({ name: propertyName, required });
+            });
+            this.registerTransformer(prototype, (state, command, builder) => {
+                // The builder's arity.extra will always be NoLimits,
+                // because it is set when we call registerDefinition
+                const isRestPositional = (index) => {
+                    const positional = state.positionals[index];
+                    // A NoLimits extra (i.e. an optional rest argument)
+                    if (positional.extra === NoLimits)
+                        return true;
+                    // A leading positional (i.e. a required rest argument)
+                    if (positional.extra === false && index < builder.arity.leading.length)
+                        return true;
+                    return false;
+                };
+                let count = 0;
+                while (count < state.positionals.length && isRestPositional(count))
+                    count += 1;
+                // @ts-ignore: The property is meant to have been defined by the child class
+                command[propertyName] = state.positionals
+                    .splice(0, count)
+                    .map(({ value }) => value);
+            });
+        };
+    }
+    /**
+     * Register a listener that takes all the arguments remaining (including options and such) and store them into the selected property.
+     * Note that all methods affecting positional arguments are evaluated in the definition order; don't mess with it (for example sorting your properties in ascendent order might have adverse results).
+     */
+    static Proxy({ required = 0 } = {}) {
+        return (prototype, propertyName) => {
+            this.registerDefinition(prototype, command => {
+                command.addProxy({ required });
+            });
+            this.registerTransformer(prototype, (state, command) => {
+                // No need to filter / splice any positionals for Command.Proxy.
+                // Once inside a proxy, we've already reached the point of no return.
+                // @ts-ignore: The property is meant to have been defined by the child class
+                command[propertyName] = state.positionals.map(({ value }) => value);
+            });
+        };
+    }
+    /**
+     * Defines the usage information for the given command.
+     * @param usage
+     */
+    static Usage(usage) {
+        return usage;
+    }
+    /**
+     * Defines the schema for the given command.
+     * @param schema
+     */
+    static Schema(schema) {
+        return schema;
+    }
+    /**
+     * Standard error handler which will simply rethrow the error. Can be used to add custom logic to handle errors
+     * from the command or simply return the parent class error handling.
+     * @param error
+     */
+    async catch(error) {
+        throw error;
+    }
+    async validateAndExecute() {
+        const commandClass = this.constructor;
+        const schema = commandClass.schema;
+        if (typeof schema !== `undefined`) {
+            try {
+                await schema.validate(this);
+            }
+            catch (error) {
+                if (error.name === `ValidationError`)
+                    error.clipanion = { type: `usage` };
+                throw error;
+            }
+        }
+        const exitCode = await this.execute();
+        if (typeof exitCode !== `undefined`) {
+            return exitCode;
+        }
+        else {
+            return 0;
+        }
+    }
+}
+/**
+ * A list of useful semi-opinionated command entries that have to be registered manually.
+ *
+ * They cover the basic needs of most CLIs (e.g. help command, version command).
+ *
+ * @example
+ * cli.register(Command.Entries.Help);
+ * cli.register(Command.Entries.Version);
+ */
+Command.Entries = {};
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+class HelpCommand extends Command {
+    async execute() {
+        this.context.stdout.write(this.cli.usage(null));
+    }
+}
+__decorate([
+    Command.Path(`--help`),
+    Command.Path(`-h`)
+], HelpCommand.prototype, "execute", null);
+
+class VersionCommand extends Command {
+    async execute() {
+        var _a;
+        this.context.stdout.write(`${(_a = this.cli.binaryVersion) !== null && _a !== void 0 ? _a : `<unknown>`}\n`);
+    }
+}
+__decorate([
+    Command.Path(`--version`),
+    Command.Path(`-v`)
+], VersionCommand.prototype, "execute", null);
+
 const richFormat = {
     bold: str => `\x1b[1m${str}\x1b[22m`,
     error: str => `\x1b[31m\x1b[1m${str}\x1b[22m\x1b[39m`,
@@ -28973,14 +30267,13 @@ function formatMarkdownish(text, { format, paragraphs }) {
 }
 
 class HelpCommand$1 extends Command {
-    constructor(realCli, contexts) {
+    constructor(contexts) {
         super();
-        this.realCli = realCli;
         this.contexts = contexts;
         this.commands = [];
     }
-    static from(state, realCli, contexts) {
-        const command = new HelpCommand$1(realCli, contexts);
+    static from(state, contexts) {
+        const command = new HelpCommand$1(contexts);
         command.path = state.path;
         for (const opt of state.options) {
             switch (opt.name) {
@@ -29002,15 +30295,18 @@ class HelpCommand$1 extends Command {
         let commands = this.commands;
         if (typeof this.index !== `undefined` && this.index >= 0 && this.index < commands.length)
             commands = [commands[this.index]];
-        if (commands.length === 1) {
-            this.context.stdout.write(this.realCli.usage(this.contexts[commands[0]].commandClass, { detailed: true }));
+        if (commands.length === 0) {
+            this.context.stdout.write(this.cli.usage());
+        }
+        else if (commands.length === 1) {
+            this.context.stdout.write(this.cli.usage(this.contexts[commands[0]].commandClass, { detailed: true }));
         }
         else if (commands.length > 1) {
             this.context.stdout.write(`Multiple commands match your selection:\n`);
             this.context.stdout.write(`\n`);
             let index = 0;
             for (const command of this.commands)
-                this.context.stdout.write(this.realCli.usage(this.contexts[command].commandClass, { prefix: `${index++}. `.padStart(5) }));
+                this.context.stdout.write(this.cli.usage(this.contexts[command].commandClass, { prefix: `${index++}. `.padStart(5) }));
             this.context.stdout.write(`\n`);
             this.context.stdout.write(`Run again with -h=<index> to see the longer details of any of those commands.\n`);
         }
@@ -29069,16 +30365,20 @@ class Cli {
         switch (state.selectedIndex) {
             case HELP_COMMAND_INDEX:
                 {
-                    return HelpCommand$1.from(state, this, contexts);
+                    return HelpCommand$1.from(state, contexts);
                 }
             default:
                 {
                     const { commandClass } = contexts[state.selectedIndex];
+                    const index = this.registrations.get(commandClass);
+                    if (typeof index === `undefined`)
+                        throw new Error(`Assertion failed: Expected the command class to have been registered.`);
+                    const commandBuilder = this.builder.getBuilderByIndex(index);
                     const command = new commandClass();
                     command.path = state.path;
                     const { transformers } = commandClass.resolveMeta(commandClass.prototype);
                     for (const transformer of transformers)
-                        transformer(state, command);
+                        transformer(state, command, commandBuilder);
                     return command;
                 }
         }
@@ -29143,8 +30443,8 @@ class Cli {
         for (const [commandClass, number] of this.registrations) {
             if (typeof commandClass.usage === `undefined`)
                 continue;
-            const path = this.getUsageByIndex(number, { detailed: false });
-            const usage = this.getUsageByIndex(number, { detailed: true });
+            const { usage: path } = this.getUsageByIndex(number, { detailed: false });
+            const { usage, options } = this.getUsageByIndex(number, { detailed: true, inlineOptions: false });
             const category = typeof commandClass.usage.category !== `undefined`
                 ? formatMarkdownish(commandClass.usage.category, { format: this.format(colored), paragraphs: false })
                 : undefined;
@@ -29157,7 +30457,7 @@ class Cli {
             const examples = typeof commandClass.usage.examples !== `undefined`
                 ? commandClass.usage.examples.map(([label, cli]) => [formatMarkdownish(label, { format: this.format(colored), paragraphs: false }), cli.replace(/\$0/g, this.binaryName)])
                 : undefined;
-            data.push({ path, usage, category, description, details, examples });
+            data.push({ path, usage, category, description, details, examples, options });
         }
         return data;
     }
@@ -29178,7 +30478,7 @@ class Cli {
                 let categoryCommands = commandsByCategories.get(category);
                 if (typeof categoryCommands === `undefined`)
                     commandsByCategories.set(category, categoryCommands = []);
-                const usage = this.getUsageByIndex(number);
+                const { usage } = this.getUsageByIndex(number);
                 categoryCommands.push({ commandClass, usage });
             }
             const categoryNames = Array.from(commandsByCategories.keys()).sort((a, b) => {
@@ -29223,7 +30523,8 @@ class Cli {
         }
         else {
             if (!detailed) {
-                result += `${this.format(colored).bold(prefix)}${this.getUsageByRegistration(commandClass)}\n`;
+                const { usage } = this.getUsageByRegistration(commandClass);
+                result += `${this.format(colored).bold(prefix)}${usage}\n`;
             }
             else {
                 const { description = ``, details = ``, examples = [], } = commandClass.usage || {};
@@ -29235,7 +30536,19 @@ class Cli {
                     result += `${this.format(colored).bold(`Usage:`)}\n`;
                     result += `\n`;
                 }
-                result += `${this.format(colored).bold(prefix)}${this.getUsageByRegistration(commandClass)}\n`;
+                const { usage, options } = this.getUsageByRegistration(commandClass, { inlineOptions: false });
+                result += `${this.format(colored).bold(prefix)}${usage}\n`;
+                if (options.length > 0) {
+                    result += `\n`;
+                    result += `${richFormat.bold('Options:')}\n`;
+                    const maxDefinitionLength = options.reduce((length, option) => {
+                        return Math.max(length, option.definition.length);
+                    }, 0);
+                    result += `\n`;
+                    for (const { definition, description } of options) {
+                        result += `  ${definition.padEnd(maxDefinitionLength)}    ${formatMarkdownish(description, { format: this.format(colored), paragraphs: false })}`;
+                    }
+                }
                 if (details !== ``) {
                     result += `\n`;
                     result += `${this.format(colored).bold(`Details:`)}\n`;
@@ -38511,7 +39824,7 @@ const parseBody = (response, responseType, parseJson, encoding) => {
             return rawBody.length === 0 ? '' : parseJson(rawBody.toString());
         }
         if (responseType === 'buffer') {
-            return Buffer.from(rawBody);
+            return rawBody;
         }
         throw new types_1.ParseError({
             message: `Unknown body type '${responseType}'`,
@@ -38913,18 +40226,28 @@ class Request extends stream_1.Duplex {
         if (json || body || form) {
             this._lockWrite();
         }
-        (async (nonNormalizedOptions) => {
+        if (exports.kIsNormalizedAlready in options) {
+            this.options = options;
+        }
+        else {
+            try {
+                // @ts-expect-error Common TypeScript bug saying that `this.constructor` is not accessible
+                this.options = this.constructor.normalizeArguments(url, options, defaults);
+            }
+            catch (error) {
+                // TODO: Move this to `_destroy()`
+                if (is_1.default.nodeStream(options.body)) {
+                    options.body.destroy();
+                }
+                this.destroy(error);
+                return;
+            }
+        }
+        (async () => {
             var _a;
             try {
-                if (nonNormalizedOptions.body instanceof fs_1.ReadStream) {
-                    await waitForOpenFile(nonNormalizedOptions.body);
-                }
-                if (exports.kIsNormalizedAlready in nonNormalizedOptions) {
-                    this.options = nonNormalizedOptions;
-                }
-                else {
-                    // @ts-expect-error Common TypeScript bug saying that `this.constructor` is not accessible
-                    this.options = this.constructor.normalizeArguments(url, nonNormalizedOptions, defaults);
+                if (this.options.body instanceof fs_1.ReadStream) {
+                    await waitForOpenFile(this.options.body);
                 }
                 const { url: normalizedURL } = this.options;
                 if (!normalizedURL) {
@@ -38956,7 +40279,7 @@ class Request extends stream_1.Duplex {
                     this.destroy(error);
                 }
             }
-        })(options);
+        })();
     }
     static normalizeArguments(url, options, defaults) {
         var _a, _b, _c, _d, _e;
@@ -39012,6 +40335,7 @@ class Request extends stream_1.Duplex {
             is_1.assert.any([is_1.default.string, is_1.default.object, is_1.default.array, is_1.default.undefined], options.https.key);
             is_1.assert.any([is_1.default.string, is_1.default.object, is_1.default.array, is_1.default.undefined], options.https.certificate);
             is_1.assert.any([is_1.default.string, is_1.default.undefined], options.https.passphrase);
+            is_1.assert.any([is_1.default.string, is_1.default.buffer, is_1.default.array, is_1.default.undefined], options.https.pfx);
         }
         is_1.assert.any([is_1.default.object, is_1.default.undefined], options.cacheOptions);
         // `options.method`
@@ -39090,6 +40414,9 @@ class Request extends stream_1.Duplex {
             options.url = options_to_url_1.default(options.prefixUrl, options);
         }
         if (options.url) {
+            if ('port' in options) {
+                delete options.port;
+            }
             // Make it possible to change `options.prefixUrl`
             let { prefixUrl } = options;
             Object.defineProperty(options, 'prefixUrl', {
@@ -39266,6 +40593,9 @@ class Request extends stream_1.Duplex {
         }
         if ('passphrase' in options) {
             deprecation_warning_1.default('"options.passphrase" was never documented, please use "options.https.passphrase"');
+        }
+        if ('pfx' in options) {
+            deprecation_warning_1.default('"options.pfx" was never documented, please use "options.https.pfx"');
         }
         // Other options
         if ('followRedirects' in options) {
@@ -39444,6 +40774,8 @@ class Request extends stream_1.Duplex {
                 if ('form' in options) {
                     delete options.form;
                 }
+                this[kBody] = undefined;
+                delete options.headers['content-length'];
             }
             if (this.redirects.length >= options.maxRedirects) {
                 this._beforeError(new MaxRedirectsError(this));
@@ -39468,15 +40800,13 @@ class Request extends stream_1.Duplex {
                         delete options.headers.authorization;
                     }
                     if (options.username || options.password) {
-                        // TODO: Fix this ignore.
-                        // @ts-expect-error
-                        delete options.username;
-                        // @ts-expect-error
-                        delete options.password;
+                        options.username = '';
+                        options.password = '';
                     }
-                    if ('port' in options) {
-                        delete options.port;
-                    }
+                }
+                else {
+                    redirectUrl.username = options.username;
+                    redirectUrl.password = options.password;
                 }
                 this.redirects.push(redirectString);
                 options.url = redirectUrl;
@@ -39644,6 +40974,9 @@ class Request extends stream_1.Duplex {
                 break;
             }
         }
+        if (options.body && this[kBody] !== options.body) {
+            this[kBody] = options.body;
+        }
         const { agent, request, timeout, url } = options;
         if (options.dnsCache && !('lookup' in options)) {
             options.lookup = options.dnsCache.lookup;
@@ -39716,6 +41049,9 @@ class Request extends stream_1.Duplex {
             if (options.https.passphrase) {
                 requestOptions.passphrase = options.https.passphrase;
             }
+            if (options.https.pfx) {
+                requestOptions.pfx = options.https.pfx;
+            }
         }
         try {
             let requestOrResponse = await fn(url, requestOptions);
@@ -39746,6 +41082,9 @@ class Request extends stream_1.Duplex {
                 }
                 if (options.https.passphrase) {
                     delete requestOptions.passphrase;
+                }
+                if (options.https.pfx) {
+                    delete requestOptions.pfx;
                 }
             }
             if (isClientRequest(requestOrResponse)) {
@@ -71567,297 +72906,6 @@ module.exports = toRegexRange;
 
 /***/ }),
 
-/***/ 4351:
-/***/ ((module) => {
-
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-/* global global, define, System, Reflect, Promise */
-var __extends;
-var __assign;
-var __rest;
-var __decorate;
-var __param;
-var __metadata;
-var __awaiter;
-var __generator;
-var __exportStar;
-var __values;
-var __read;
-var __spread;
-var __spreadArrays;
-var __await;
-var __asyncGenerator;
-var __asyncDelegator;
-var __asyncValues;
-var __makeTemplateObject;
-var __importStar;
-var __importDefault;
-var __classPrivateFieldGet;
-var __classPrivateFieldSet;
-var __createBinding;
-(function (factory) {
-    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
-    if (typeof define === "function" && define.amd) {
-        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
-    }
-    else if ( true && typeof module.exports === "object") {
-        factory(createExporter(root, createExporter(module.exports)));
-    }
-    else {
-        factory(createExporter(root));
-    }
-    function createExporter(exports, previous) {
-        if (exports !== root) {
-            if (typeof Object.create === "function") {
-                Object.defineProperty(exports, "__esModule", { value: true });
-            }
-            else {
-                exports.__esModule = true;
-            }
-        }
-        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
-    }
-})
-(function (exporter) {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-
-    __extends = function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-
-    __assign = Object.assign || function (t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-
-    __rest = function (s, e) {
-        var t = {};
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-            t[p] = s[p];
-        if (s != null && typeof Object.getOwnPropertySymbols === "function")
-            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                    t[p[i]] = s[p[i]];
-            }
-        return t;
-    };
-
-    __decorate = function (decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-
-    __param = function (paramIndex, decorator) {
-        return function (target, key) { decorator(target, key, paramIndex); }
-    };
-
-    __metadata = function (metadataKey, metadataValue) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-    };
-
-    __awaiter = function (thisArg, _arguments, P, generator) {
-        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-        return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-        });
-    };
-
-    __generator = function (thisArg, body) {
-        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-        function verb(n) { return function (v) { return step([n, v]); }; }
-        function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-                if (y = 0, t) op = [op[0] & 2, t.value];
-                switch (op[0]) {
-                    case 0: case 1: t = op; break;
-                    case 4: _.label++; return { value: op[1], done: false };
-                    case 5: _.label++; y = op[1]; op = [0]; continue;
-                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                    default:
-                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                        if (t[2]) _.ops.pop();
-                        _.trys.pop(); continue;
-                }
-                op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-        }
-    };
-
-    __createBinding = function(o, m, k, k2) {
-        if (k2 === undefined) k2 = k;
-        o[k2] = m[k];
-    };
-
-    __exportStar = function (m, exports) {
-        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
-    };
-
-    __values = function (o) {
-        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-        if (m) return m.call(o);
-        if (o && typeof o.length === "number") return {
-            next: function () {
-                if (o && i >= o.length) o = void 0;
-                return { value: o && o[i++], done: !o };
-            }
-        };
-        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-    };
-
-    __read = function (o, n) {
-        var m = typeof Symbol === "function" && o[Symbol.iterator];
-        if (!m) return o;
-        var i = m.call(o), r, ar = [], e;
-        try {
-            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-        }
-        catch (error) { e = { error: error }; }
-        finally {
-            try {
-                if (r && !r.done && (m = i["return"])) m.call(i);
-            }
-            finally { if (e) throw e.error; }
-        }
-        return ar;
-    };
-
-    __spread = function () {
-        for (var ar = [], i = 0; i < arguments.length; i++)
-            ar = ar.concat(__read(arguments[i]));
-        return ar;
-    };
-
-    __spreadArrays = function () {
-        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-        for (var r = Array(s), k = 0, i = 0; i < il; i++)
-            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-                r[k] = a[j];
-        return r;
-    };
-
-    __await = function (v) {
-        return this instanceof __await ? (this.v = v, this) : new __await(v);
-    };
-
-    __asyncGenerator = function (thisArg, _arguments, generator) {
-        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-        var g = generator.apply(thisArg, _arguments || []), i, q = [];
-        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
-        function fulfill(value) { resume("next", value); }
-        function reject(value) { resume("throw", value); }
-        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-    };
-
-    __asyncDelegator = function (o) {
-        var i, p;
-        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
-    };
-
-    __asyncValues = function (o) {
-        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-        var m = o[Symbol.asyncIterator], i;
-        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
-        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
-    };
-
-    __makeTemplateObject = function (cooked, raw) {
-        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-        return cooked;
-    };
-
-    __importStar = function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-        result["default"] = mod;
-        return result;
-    };
-
-    __importDefault = function (mod) {
-        return (mod && mod.__esModule) ? mod : { "default": mod };
-    };
-
-    __classPrivateFieldGet = function (receiver, privateMap) {
-        if (!privateMap.has(receiver)) {
-            throw new TypeError("attempted to get private field on non-instance");
-        }
-        return privateMap.get(receiver);
-    };
-
-    __classPrivateFieldSet = function (receiver, privateMap, value) {
-        if (!privateMap.has(receiver)) {
-            throw new TypeError("attempted to set private field on non-instance");
-        }
-        privateMap.set(receiver, value);
-        return value;
-    };
-
-    exporter("__extends", __extends);
-    exporter("__assign", __assign);
-    exporter("__rest", __rest);
-    exporter("__decorate", __decorate);
-    exporter("__param", __param);
-    exporter("__metadata", __metadata);
-    exporter("__awaiter", __awaiter);
-    exporter("__generator", __generator);
-    exporter("__exportStar", __exportStar);
-    exporter("__createBinding", __createBinding);
-    exporter("__values", __values);
-    exporter("__read", __read);
-    exporter("__spread", __spread);
-    exporter("__spreadArrays", __spreadArrays);
-    exporter("__await", __await);
-    exporter("__asyncGenerator", __asyncGenerator);
-    exporter("__asyncDelegator", __asyncDelegator);
-    exporter("__asyncValues", __asyncValues);
-    exporter("__makeTemplateObject", __makeTemplateObject);
-    exporter("__importStar", __importStar);
-    exporter("__importDefault", __importDefault);
-    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
-    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
-});
-
-
-/***/ }),
-
 /***/ 4294:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -74664,6 +75712,15 @@ const path_1 = __importDefault(__webpack_require__(5622));
 const exec_1 = __importDefault(__webpack_require__(9933));
 const node_1 = __importDefault(__webpack_require__(5917));
 const run_1 = __importDefault(__webpack_require__(9566));
+var Module = __webpack_require__(2282);
+__webpack_require__(7284);
+__webpack_require__(9374);
+__webpack_require__(2746);
+const names = ['@yarnpkg/core', '@yarnpkg/fslib', 'cross-spawn'];
+const mods = Object.assign({}, ...names.map((x) => ({
+    [x]: require(x),
+})));
+replaceRequire(dynamicRequire);
 exports.memoizer = memoize_fs_1.default({
     cachePath: path_1.default.resolve(os_1.default.tmpdir(), 'yarn-plugin-cache'),
 });
@@ -74682,6 +75739,66 @@ const plugin = {
 // eslint-disable-next-line arca/no-default-export
 exports.default = plugin;
 module.exports = plugin;
+function dynamicRequire(originalRequire, name) {
+    return mods[name];
+}
+function replaceRequire(newRequire) {
+    var originalRequire = Module.prototype.require;
+    Module.prototype.require = function (name) {
+        //do your thing here
+        return newRequire(originalRequire, name);
+    };
+}
+// const requireByName = (
+//     name: string,
+//     makeGlobal?: string | boolean,
+// ): Promise<any> =>
+//     getAllModules().then((modules) => {
+//         let returnMember
+//         let module = _.find<any, any>(modules, (module) => {
+//             if (_.isObject(module.exports) && name in module.exports) {
+//                 returnMember = true
+//                 return true
+//             } else if (
+//                 _.isFunction(module.exports) &&
+//                 module.exports.name === name
+//             ) {
+//                 return true
+//             }
+//         })
+//         if (module) {
+//             module = returnMember ? module.exports[name] : module.exports
+//             if (makeGlobal) {
+//                 const moduleName =
+//                     makeGlobal === true ? name : (makeGlobal as string)
+//                 window[moduleName] = module
+//                 console.log(
+//                     `Module or module export saved as 'window.${moduleName}':`,
+//                     module,
+//                 )
+//             } else {
+//                 console.log(`Module or module export 'name' found:`, module)
+//             }
+//             return module
+//         }
+//         console.warn(`Module or module export '${name}'' could not be found`)
+//         return null
+//     })
+// // Returns promise that resolves to all installed modules
+// function getAllModules() {
+//     return new Promise((resolve) => {
+//         const id = _.uniqueId('fakeModule_')
+//         window['webpackJsonp'](
+//             [],
+//             {
+//                 [id]: function (module, exports, __webpack_require__) {
+//                     resolve(__webpack_require__.c)
+//                 },
+//             },
+//             [id],
+//         )
+//     })
+// }
 
 
 /***/ }),

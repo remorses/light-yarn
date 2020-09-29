@@ -75712,93 +75712,27 @@ const path_1 = __importDefault(__webpack_require__(5622));
 const exec_1 = __importDefault(__webpack_require__(9933));
 const node_1 = __importDefault(__webpack_require__(5917));
 const run_1 = __importDefault(__webpack_require__(9566));
-var Module = __webpack_require__(2282);
-__webpack_require__(7284);
-__webpack_require__(9374);
-__webpack_require__(2746);
-const names = ['@yarnpkg/core', '@yarnpkg/fslib', 'cross-spawn'];
-const mods = Object.assign({}, ...names.map((x) => ({
-    [x]: require(x),
-})));
-replaceRequire(dynamicRequire);
 exports.memoizer = memoize_fs_1.default({
     cachePath: path_1.default.resolve(os_1.default.tmpdir(), 'yarn-plugin-cache'),
 });
 const plugin = {
     name: `plugin-hello-world`,
-    factory: () => ({
-        hooks: {
-            afterAllInstalled() {
-                console.error(chalk_1.default.green(`Invalidating lightweight cache`));
-                exports.memoizer.invalidate();
+    factory: () => {
+        // @ts-ignore ue the yarn require implementation
+        eval("require")(path_1.default.resolve(process.cwd(), '.pnp.js')).setup();
+        return {
+            hooks: {
+                afterAllInstalled() {
+                    console.error(chalk_1.default.green(`Invalidating lightweight cache`));
+                    exports.memoizer.invalidate();
+                },
             },
-        },
-        commands: [run_1.default, exec_1.default, node_1.default],
-    }),
+            commands: [run_1.default, exec_1.default, node_1.default],
+        };
+    },
 };
-// eslint-disable-next-line arca/no-default-export
 exports.default = plugin;
 module.exports = plugin;
-function dynamicRequire(originalRequire, name) {
-    return mods[name];
-}
-function replaceRequire(newRequire) {
-    var originalRequire = Module.prototype.require;
-    Module.prototype.require = function (name) {
-        //do your thing here
-        return newRequire(originalRequire, name);
-    };
-}
-// const requireByName = (
-//     name: string,
-//     makeGlobal?: string | boolean,
-// ): Promise<any> =>
-//     getAllModules().then((modules) => {
-//         let returnMember
-//         let module = _.find<any, any>(modules, (module) => {
-//             if (_.isObject(module.exports) && name in module.exports) {
-//                 returnMember = true
-//                 return true
-//             } else if (
-//                 _.isFunction(module.exports) &&
-//                 module.exports.name === name
-//             ) {
-//                 return true
-//             }
-//         })
-//         if (module) {
-//             module = returnMember ? module.exports[name] : module.exports
-//             if (makeGlobal) {
-//                 const moduleName =
-//                     makeGlobal === true ? name : (makeGlobal as string)
-//                 window[moduleName] = module
-//                 console.log(
-//                     `Module or module export saved as 'window.${moduleName}':`,
-//                     module,
-//                 )
-//             } else {
-//                 console.log(`Module or module export 'name' found:`, module)
-//             }
-//             return module
-//         }
-//         console.warn(`Module or module export '${name}'' could not be found`)
-//         return null
-//     })
-// // Returns promise that resolves to all installed modules
-// function getAllModules() {
-//     return new Promise((resolve) => {
-//         const id = _.uniqueId('fakeModule_')
-//         window['webpackJsonp'](
-//             [],
-//             {
-//                 [id]: function (module, exports, __webpack_require__) {
-//                     resolve(__webpack_require__.c)
-//                 },
-//             },
-//             [id],
-//         )
-//     })
-// }
 
 
 /***/ }),

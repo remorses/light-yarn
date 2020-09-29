@@ -18,6 +18,7 @@
     "memoize-fs": "^2.2.0",
     "micromatch": "^4.0.2",
     "semver": "^7.1.2",
+    "string-argv": "^0.3.1",
     "tslib": "^2.0.1",
     "yup": "^0.29.3"
   },

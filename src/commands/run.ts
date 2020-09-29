@@ -1,6 +1,8 @@
 import { BaseCommand } from '@yarnpkg/cli'
 import { Configuration, Project } from '@yarnpkg/core'
 import * as execUtils from '@yarnpkg/core/lib/execUtils'
+import { parseArgsStringToArgv  } from 'string-argv'
+
 import {
     getPackageAccessibleBinaries,
     makeScriptEnv,
@@ -94,6 +96,7 @@ export default class RunCommand extends BaseCommand {
         onlyScripts,
         ignoreScripts = [],
     }) {
+        // TODO remove quotes from args
         args = args.map(x => x.trim()).filter(Boolean)
         if (process.env.DEBUG_LIGHT_YARN) {
             console.log('this.context.cwd', this.context.cwd)
@@ -110,7 +113,7 @@ export default class RunCommand extends BaseCommand {
             ) {
                 const content = packageJSON.scripts[binaryName]
                 // TODO parse command into args
-                const parsed = content.split(' ')
+                const parsed = parseArgsStringToArgv(content)
                 return this.execCommand({
                     args: [...parsed.slice(1), ...args],
                     binaryName: parsed[0],

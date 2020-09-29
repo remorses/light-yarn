@@ -6,7 +6,7 @@ import path from 'path'
 import exec from './commands/exec'
 import node from './commands/node'
 import run from './commands/run'
-
+import findUp from 'find-up'
 
 export const memoizer = memoizefs({
     cachePath: path.resolve(os.tmpdir(), 'yarn-plugin-cache'),
@@ -16,7 +16,7 @@ const plugin = {
     name: `plugin-hello-world`,
     factory: () => {
         // @ts-ignore use the yarn require implementation
-        __non_webpack_require__(path.resolve(process.cwd(), '.pnp.js')).setup()
+        __non_webpack_require__(findUp.sync('.pnp.js')).setup()
 
         return {
             hooks: {

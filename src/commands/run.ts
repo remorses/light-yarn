@@ -32,7 +32,7 @@ export default class RunCommand extends BaseCommand {
     @Command.Boolean(`-T,--top-level`, { hidden: true })
     topLevel: boolean = false
 
-    @Command.Boolean(`--only-scripts`, { hidden: true })
+    @Command.Boolean(`--only-scripts`, { hidden: false })
     onlyScripts: boolean = false
 
     // Some tools (for example text editors) want to call the real binaries, not
@@ -94,6 +94,12 @@ export default class RunCommand extends BaseCommand {
         onlyScripts,
         ignoreScripts = [],
     }) {
+        if (true) {
+            console.log('configuration.startingCwd', configuration.startingCwd)
+            console.log('this.context.cwd', this.context.cwd)
+            console.log('binaryName', binaryName)
+            console.log('args', args)
+        }
         // if a script exists in package.json, run that
         const packageJSON = getPackageJSON(configuration.startingCwd)
         if (packageJSON) {
@@ -164,6 +170,7 @@ export default class RunCommand extends BaseCommand {
             return new Promise((res, rej) => {
                 const cmd = exec(binaryName + ' ' + args.join(' '), {
                     env: process.env,
+                    cwd: this.context.cwd,
                 })
                 cmd.stdout.pipe(this.context.stdout)
                 cmd.stderr.pipe(this.context.stderr)

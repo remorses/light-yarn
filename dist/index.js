@@ -36774,14 +36774,14 @@ module.exports = fill;
 
 /***/ }),
 
-/***/ 486:
+/***/ 9486:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 const path = __webpack_require__(5622);
-const locatePath = __webpack_require__(447);
-const pathExists = __webpack_require__(978);
+const locatePath = __webpack_require__(3447);
+const pathExists = __webpack_require__(6978);
 
 const stop = Symbol('findUp.stop');
 
@@ -52661,7 +52661,7 @@ module.exports = Keyv;
 
 /***/ }),
 
-/***/ 447:
+/***/ 3447:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -63561,7 +63561,7 @@ module.exports.default = pTry;
 
 /***/ }),
 
-/***/ 978:
+/***/ 6978:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -75832,6 +75832,12 @@ class RunCommand extends cli_1.BaseCommand {
         });
     }
     async execCommand({ binaryName, configuration, args, onlyScripts, ignoreScripts = [], }) {
+        if (true) {
+            console.log('configuration.startingCwd', configuration.startingCwd);
+            console.log('this.context.cwd', this.context.cwd);
+            console.log('binaryName', binaryName);
+            console.log('args', args);
+        }
         // if a script exists in package.json, run that
         const packageJSON = getPackageJSON(configuration.startingCwd);
         if (packageJSON) {
@@ -75886,6 +75892,7 @@ class RunCommand extends cli_1.BaseCommand {
             return new Promise((res, rej) => {
                 const cmd = child_process_1.exec(binaryName + ' ' + args.join(' '), {
                     env: process.env,
+                    cwd: this.context.cwd,
                 });
                 cmd.stdout.pipe(this.context.stdout);
                 cmd.stderr.pipe(this.context.stderr);
@@ -75974,7 +75981,7 @@ __decorate([
     clipanion_1.Command.Boolean(`-T,--top-level`, { hidden: true })
 ], RunCommand.prototype, "topLevel", void 0);
 __decorate([
-    clipanion_1.Command.Boolean(`--only-scripts`, { hidden: true })
+    clipanion_1.Command.Boolean(`--only-scripts`, { hidden: false })
 ], RunCommand.prototype, "onlyScripts", void 0);
 __decorate([
     clipanion_1.Command.Boolean(`-B,--binaries-only`, { hidden: true })
@@ -76051,12 +76058,12 @@ const path_1 = __importDefault(__webpack_require__(5622));
 const exec_1 = __importDefault(__webpack_require__(9933));
 const node_1 = __importDefault(__webpack_require__(5917));
 const run_1 = __importDefault(__webpack_require__(9566));
-const find_up_1 = __importDefault(__webpack_require__(486));
+const find_up_1 = __importDefault(__webpack_require__(9486));
 exports.memoizer = memoize_fs_1.default({
     cachePath: path_1.default.resolve(os_1.default.tmpdir(), 'yarn-plugin-cache'),
 });
 const plugin = {
-    name: `plugin-hello-world`,
+    name: `plugin-light-yarn`,
     factory: () => {
         // @ts-ignore use the yarn require implementation
         eval("require")(find_up_1.default.sync('.pnp.js')).setup();

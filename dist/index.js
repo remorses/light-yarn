@@ -76103,9 +76103,13 @@ exports.memoizer = memoize_fs_1.default({
 });
 const plugin = {
     name: `plugin-light-yarn`,
+    id: `plugin-light-yarn`,
     factory: () => {
-        // @ts-ignore use the yarn require implementation
-        eval("require")(find_up_1.default.sync('.pnp.js')).setup();
+        const pnpFile = find_up_1.default.sync('.pnp.js');
+        if (pnpFile) {
+            // @ts-ignore use the yarn require implementation
+            eval("require")(pnpFile).setup();
+        }
         return {
             hooks: {
                 afterAllInstalled() {
@@ -76113,6 +76117,7 @@ const plugin = {
                     exports.memoizer.invalidate();
                 },
             },
+            id: `plugin-light-yarn`,
             commands: [run_1.default, exec_1.default, node_1.default],
         };
     },

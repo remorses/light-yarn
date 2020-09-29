@@ -14,3 +14,7 @@ yarn lightnode file.js
 
 yarn workspaces foreach --parallel lightexec echo ciao
 ```
+
+## TODOs
+
+- env vars interpolation like `--jobs ${CI_LERNA_CONCURRENCY:-8}`

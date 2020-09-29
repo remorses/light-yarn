@@ -14,17 +14,24 @@ export const memoizer = memoizefs({
 
 const plugin = {
     name: `plugin-light-yarn`,
+    id: `plugin-light-yarn`,
     factory: () => {
-        // @ts-ignore use the yarn require implementation
-        __non_webpack_require__(findUp.sync('.pnp.js')).setup()
+        const pnpFile = findUp.sync('.pnp.js')
+        if (pnpFile) {
+            // @ts-ignore use the yarn require implementation
+            __non_webpack_require__(pnpFile).setup()
+        }
 
         return {
             hooks: {
                 afterAllInstalled() {
-                    console.error(chalk.green(`Invalidating light-yarn plugin cache`))
+                    console.error(
+                        chalk.green(`Invalidating light-yarn plugin cache`),
+                    )
                     memoizer.invalidate()
                 },
             },
+            id: `plugin-light-yarn`,
             commands: [run, exec, node],
         }
     },

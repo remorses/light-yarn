@@ -75678,7 +75678,11 @@ class ExecCommand extends cli_1.BaseCommand {
         this.args = [];
     }
     async execute() {
+        console.log({ cwd: this.context.cwd });
         const configuration = await core_1.Configuration.find(this.context.cwd, this.context.plugins);
+        console.log({ projectCwd: configuration.projectCwd });
+        console.log({ commandName: this.commandName });
+        console.log({ args: this.args });
         // const {project} = await Project.find(configuration, this.context.cwd);
         return await fslib_1.xfs.mktempPromise(async (binFolder) => {
             const { code } = await core_1.execUtils.pipevp(this.commandName, this.args, {
@@ -75803,7 +75807,6 @@ const core_1 = __webpack_require__(7284);
 const execUtils = __importStar(__webpack_require__(9437));
 const scriptUtils_1 = __webpack_require__(9543);
 const fslib_1 = __webpack_require__(9374);
-const child_process_1 = __webpack_require__(3129);
 const clipanion_1 = __webpack_require__(5392);
 const path_1 = __importDefault(__webpack_require__(5622));
 const __1 = __webpack_require__(6144);
@@ -75832,7 +75835,8 @@ class RunCommand extends cli_1.BaseCommand {
         });
     }
     async execCommand({ binaryName, configuration, args, onlyScripts, ignoreScripts = [], }) {
-        if (true) {
+        args = args.map(x => x.trim()).filter(Boolean);
+        if (process.env.DEBUG_LIGHT_YARN) {
             console.log('this.context.cwd', this.context.cwd);
             console.log('binaryName', binaryName);
             console.log('args', args);
@@ -75889,29 +75893,6 @@ class RunCommand extends cli_1.BaseCommand {
             //     )}`,
             // )
             return this.cli.run([`lightexec`, binaryName, ...args]);
-            return new Promise((res, rej) => {
-                const cmd = child_process_1.exec(binaryName + ' ' + args.join(' '), {
-                    env: process.env,
-                    cwd: this.context.cwd,
-                });
-                cmd.stdout.pipe(this.context.stdout);
-                cmd.stderr.pipe(this.context.stderr);
-                cmd.on('exit', (code) => {
-                    if (code !== 0) {
-                        // this.context.stderr.write(
-                        //     chalk.red(`😢 Exit with error status ${code}`),
-                        //     console.error,
-                        // )
-                    }
-                    res(code);
-                });
-                cmd.on('error', (err) => {
-                    // this.context.stderr.write(
-                    //     chalk.red(`😢 Exit with error: ${err.message}`),
-                    // )
-                    rej(err);
-                });
-            });
         }
         // run the dep script with yarn node
         return await fslib_1.xfs.mktempPromise(async (binFolder) => {
@@ -75924,6 +75905,7 @@ class RunCommand extends cli_1.BaseCommand {
                 await makePathWrapper(env.BERRY_BIN_FOLDER, fslib_1.toFilename(binaryName), process.execPath, [binaryPath]);
             }
             let result;
+            // console.log(this.context.cwd)
             try {
                 result = await execUtils.pipevp(process.execPath, [
                     ...getNodeArgs({
@@ -75935,6 +75917,7 @@ class RunCommand extends cli_1.BaseCommand {
                 ], {
                     cwd: this.context.cwd,
                     env: {
+                        ...process.env,
                         ...env,
                         NODE_OPTIONS: (process.env.NODE_OPTIONS || '') +
                             ' --require ' +

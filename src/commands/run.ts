@@ -94,7 +94,8 @@ export default class RunCommand extends BaseCommand {
         onlyScripts,
         ignoreScripts = [],
     }) {
-        if (true) {
+        args = args.map(x => x.trim()).filter(Boolean)
+        if (process.env.DEBUG_LIGHT_YARN) {
             console.log('this.context.cwd', this.context.cwd)
             console.log('binaryName', binaryName)
             console.log('args', args)
@@ -187,6 +188,7 @@ export default class RunCommand extends BaseCommand {
             }
 
             let result
+            // console.log(this.context.cwd)
             try {
                 result = await execUtils.pipevp(
                     process.execPath,
@@ -201,6 +203,7 @@ export default class RunCommand extends BaseCommand {
                     {
                         cwd: this.context.cwd,
                         env: {
+                            ...process.env,
                             ...env,
                             NODE_OPTIONS:
                                 (process.env.NODE_OPTIONS || '') +

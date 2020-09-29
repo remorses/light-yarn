@@ -24,10 +24,14 @@ export default class ExecCommand extends BaseCommand {
 
   @Command.Path(`lightexec`)
   async execute() {
+    console.log({cwd: this.context.cwd})
     const configuration = await Configuration.find(
       this.context.cwd,
       this.context.plugins
-    );
+      );
+    console.log({projectCwd: configuration.projectCwd})
+    console.log({commandName: this.commandName})
+    console.log({args: this.args})
     // const {project} = await Project.find(configuration, this.context.cwd);
 
     return await xfs.mktempPromise(async (binFolder) => {

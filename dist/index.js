@@ -75730,11 +75730,13 @@ class ExecCommand extends cli_1.BaseCommand {
         this.args = [];
     }
     async execute() {
-        console.log({ cwd: this.context.cwd });
         const configuration = await core_1.Configuration.find(this.context.cwd, this.context.plugins);
-        console.log({ projectCwd: configuration.projectCwd });
-        console.log({ commandName: this.commandName });
-        console.log({ args: this.args });
+        if (process.env.DEBUG_LIGHT_YARN) {
+            console.log({ cwd: this.context.cwd });
+            console.log({ projectCwd: configuration.projectCwd });
+            console.log({ commandName: this.commandName });
+            console.log({ args: this.args });
+        }
         // const {project} = await Project.find(configuration, this.context.cwd);
         return await fslib_1.xfs.mktempPromise(async (binFolder) => {
             const { code } = await core_1.execUtils.pipevp(this.commandName, this.args, {

@@ -21,7 +21,7 @@ const plugin = {
         return {
             hooks: {
                 afterAllInstalled() {
-                    console.error(chalk.green(`Invalidating lightweight cache`))
+                    console.error(chalk.green(`Invalidating light-yarn plugin cache`))
                     memoizer.invalidate()
                 },
             },

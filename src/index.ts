@@ -13,7 +13,7 @@ export const memoizer = memoizefs({
 })
 
 const plugin = {
-    name: `plugin-hello-world`,
+    name: `plugin-light-yarn`,
     factory: () => {
         // @ts-ignore use the yarn require implementation
         __non_webpack_require__(findUp.sync('.pnp.js')).setup()

@@ -95,7 +95,6 @@ export default class RunCommand extends BaseCommand {
         ignoreScripts = [],
     }) {
         if (true) {
-            console.log('configuration.startingCwd', configuration.startingCwd)
             console.log('this.context.cwd', this.context.cwd)
             console.log('binaryName', binaryName)
             console.log('args', args)
@@ -166,30 +165,7 @@ export default class RunCommand extends BaseCommand {
             //         packageAccessibleBinaries,
             //     )}`,
             // )
-
-            return new Promise((res, rej) => {
-                const cmd = exec(binaryName + ' ' + args.join(' '), {
-                    env: process.env,
-                    cwd: this.context.cwd,
-                })
-                cmd.stdout.pipe(this.context.stdout)
-                cmd.stderr.pipe(this.context.stderr)
-                cmd.on('exit', (code) => {
-                    if (code !== 0) {
-                        // this.context.stderr.write(
-                        //     chalk.red(`😢 Exit with error status ${code}`),
-                        //     console.error,
-                        // )
-                    }
-                    res(code)
-                })
-                cmd.on('error', (err) => {
-                    // this.context.stderr.write(
-                    //     chalk.red(`😢 Exit with error: ${err.message}`),
-                    // )
-                    rej(err)
-                })
-            })
+            return this.cli.run([`lightexec`, binaryName, ...args])
         }
 
         // run the dep script with yarn node

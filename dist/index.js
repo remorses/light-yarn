@@ -75833,7 +75833,6 @@ class RunCommand extends cli_1.BaseCommand {
     }
     async execCommand({ binaryName, configuration, args, onlyScripts, ignoreScripts = [], }) {
         if (true) {
-            console.log('configuration.startingCwd', configuration.startingCwd);
             console.log('this.context.cwd', this.context.cwd);
             console.log('binaryName', binaryName);
             console.log('args', args);
@@ -75889,6 +75888,7 @@ class RunCommand extends cli_1.BaseCommand {
             //         packageAccessibleBinaries,
             //     )}`,
             // )
+            return this.cli.run([`lightexec`, binaryName, ...args]);
             return new Promise((res, rej) => {
                 const cmd = child_process_1.exec(binaryName + ' ' + args.join(' '), {
                     env: process.env,

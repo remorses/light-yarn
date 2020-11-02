@@ -1,7 +1,7 @@
 import { BaseCommand } from '@yarnpkg/cli'
 import { Configuration, Project } from '@yarnpkg/core'
 import * as execUtils from '@yarnpkg/core/lib/execUtils'
-import { parseArgsStringToArgv  } from 'string-argv'
+import { parseArgsStringToArgv } from 'string-argv'
 
 import {
     getPackageAccessibleBinaries,
@@ -76,7 +76,7 @@ export default class RunCommand extends BaseCommand {
         ],
     })
 
-    @Command.Path(`lightrun`)
+    @Command.Path(`lightrun`, 'l')
     async execute() {
         const configuration = await Configuration.find(
             this.context.cwd,
@@ -97,7 +97,7 @@ export default class RunCommand extends BaseCommand {
         ignoreScripts = [],
     }) {
         // TODO remove quotes from args
-        args = args.map(x => x.trim()).filter(Boolean)
+        args = args.map((x) => x.trim()).filter(Boolean)
         if (process.env.DEBUG_LIGHT_YARN) {
             console.log('this.context.cwd', this.context.cwd)
             console.log('binaryName', binaryName)

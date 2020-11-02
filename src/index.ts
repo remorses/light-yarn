@@ -25,9 +25,9 @@ const plugin = {
         return {
             hooks: {
                 afterAllInstalled() {
-                    console.error(
-                        chalk.green(`Invalidating light-yarn plugin cache`),
-                    )
+                    // console.error(
+                    //     chalk.green(`Invalidating light-yarn plugin cache`),
+                    // )
                     memoizer.invalidate()
                 },
             },
